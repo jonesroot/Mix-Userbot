@@ -303,6 +303,64 @@ async def quotly(messages, kolor):
         messages = [messages]
     payload = {
         "type": "quote",
+        "format": "png",
+        "backgroundColor": kolor,
+        "messages": [],
+    }
+
+    for m in messages:
+        m_dict = {}
+        if m.entities:
+            m_dict["entities"] = [
+                {
+                    "type": entity.type.name.lower(),
+                    "offset": entity.offset,
+                    "length": entity.length,
+                }
+                for entity in m.entities
+            ]
+        elif m.caption_entities:
+            m_dict["entities"] = [
+                {
+                    "type": entity.type.name.lower(),
+                    "offset": entity.offset,
+                    "length": entity.length,
+                }
+                for entity in m.caption_entities
+            ]
+        else:
+            m_dict["entities"] = []
+        m_dict["chatId"] = await get_sender(m)
+        m_dict["text"] = await t_or_c(m)
+        m_dict["avatar"] = True
+        m_dict["from"] = {}
+        m_dict["from"]["id"] = await get_sender(m)
+        m_dict["from"]["name"] = await sender_name(m)
+        m_dict["from"]["username"] = await sender_username(m)
+        m_dict["from"]["type"] = m.chat.type.name.lower()
+        m_dict["from"]["photo"] = await sender_photo(m)
+        if m.reply_to_message:
+            m_dict["replyMessage"] = {
+                "name": await sender_name(m.reply_to_message),
+                "text": await t_or_c(m.reply_to_message),
+                "chatId": await get_sender(m.reply_to_message),
+            }
+        else:
+            m_dict["replyMessage"] = {}
+        payload["messages"].append(m_dict)
+    r = await http.post("https://bot.lyo.su/quote/generate.png", json=payload)
+    if not r.is_error:
+        return r.read()
+    else:
+        raise QuotlyException(r.json())
+        
+        
+"""
+async def quotly(messages, kolor):
+    if not isinstance(messages, list):
+        messages = [messages]
+    payload = {
+        "type": "quote",
         "format": "webp",
         "backgroundColor": kolor,
         "messages": [],
@@ -354,6 +412,7 @@ async def quotly(messages, kolor):
         return r.read()
     else:
         raise QuotlyException(r.json())
+"""
 
 
 def isArgInt(txt) -> list:
