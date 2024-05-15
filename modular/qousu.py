@@ -56,6 +56,7 @@ async def _(c: nlx, m):
         await m.reply(jadi + iymek)
 
 
+@ky.ubot("q", sudo=True)
 async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
