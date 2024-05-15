@@ -43,7 +43,7 @@ async def consu(dok):
 
 @ky.ubot("qcolor", sudo=True)
 async def _(c: nlx, m):
-    em = Emojik(c)
+    em = Emojik()
     em.initialize()
     iymek = f"\n• ".join(loanjing)
     jadi = cgr("qot_1").format(em.proses)
@@ -124,9 +124,6 @@ async def _(c: nlx, m):
         hasil = await quotly(messages, acak)
         bio_sticker = BytesIO(hasil)
         bio_sticker.name = "biosticker.webp"
-        # with open("hasil.json", "w") as file:
-        # file.write(hasil.decode())
-        # stik = await consu("hasil.json")
         await m.reply_sticker(bio_sticker)
         await pros.delete()
     except Exception as e:
