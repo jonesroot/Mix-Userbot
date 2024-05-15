@@ -56,80 +56,82 @@ async def _(c: nlx, m):
         await m.reply(jadi + iymek)
 
 
-@ky.ubot("q", sudo=True)
 async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
     acak = None
     messages = None
     pros = await m.edit(cgr("proses").format(em.proses))
-    rep = m.reply_to_message
-    if len(m.command) > 1:
-        tag = m.command[1].strip()
-        if tag.startswith("@"):
-            user_id = tag[1:]
-            try:
-                org = await c.get_users(user_id)
-                if org.id in DEVS:
-                    await pros.edit(cgr("qot_3").format(em.gagal))
-                    return
-                rep = await c.get_messages(m.chat.id, m.reply_to_message.id, replies=0)
-                rep.from_user = org
-                messages = [rep]
-            except Exception as e:
-                return await pros.edit(cgr("err").format(em.gagal, e))
-            warna = m.text.split(None, 2)[2] if len(m.command) > 2 else None
-            if warna:
-                acak = warna
-            else:
-                acak = random.choice(loanjing)
-        elif not tag.startswith("@"):
-            warna = m.text.split(None, 1)[1] if len(m.command) > 1 else None
-            if warna:
-                acak = warna
-            else:
-                acak = random.choice(loanjing)
+    try:
+        rep = m.reply_to_message
+        if len(m.command) > 1:
+            tag = m.command[1].strip()
+            if tag.startswith("@"):
+                user_id = tag[1:]
+                try:
+                    org = await c.get_users(user_id)
+                    if org.id in DEVS:
+                        await pros.edit(cgr("qot_3").format(em.gagal))
+                        return
+                    rep = await c.get_messages(m.chat.id, m.reply_to_message.id, replies=0)
+                    rep.from_user = org
+                    messages = [rep]
+                except Exception as e:
+                    return await pros.edit(cgr("err").format(em.gagal, e))
+                warna = m.text.split(None, 2)[2] if len(m.command) > 2 else None
+                if warna:
+                    acak = warna
+                else:
+                    acak = random.choice(loanjing)
+            elif not tag.startswith("@"):
+                warna = m.text.split(None, 1)[1] if len(m.command) > 1 else None
+                if warna:
+                    acak = warna
+                else:
+                    acak = random.choice(loanjing)
+                m_one = await c.get_messages(
+                    chat_id=m.chat.id, message_ids=m.reply_to_message.id, replies=0
+                )
+                messages = [m_one]
+
+            elif int(tag):
+                if int(tag) > 10:
+                    return await pros.edit(cgr("qot_4").format(em.gagal))
+                warna = m.text.split(None, 2)[2] if len(m.command) > 2 else None
+                if warna:
+                    acak = warna
+                else:
+                    acak = random.choice(loanjing)
+                messages = [
+                    i
+                    for i in await c.get_messages(
+                        chat_id=m.chat.id,
+                        message_ids=range(
+                            m.reply_to_message.id,
+                            m.reply_to_message.id + int(tag),
+                        ),
+                        replies=0,
+                    )
+                    if not i.empty and not i.media
+                ]
+        else:
+            acak = random.choice(loanjing)
             m_one = await c.get_messages(
                 chat_id=m.chat.id, message_ids=m.reply_to_message.id, replies=0
             )
             messages = [m_one]
-
-        elif int(tag):
-            if int(tag) > 10:
-                return await pros.edit(cgr("qot_4").format(em.gagal))
-            warna = m.text.split(None, 2)[2] if len(m.command) > 2 else None
-            if warna:
-                acak = warna
-            else:
-                acak = random.choice(loanjing)
-            messages = [
-                i
-                for i in await c.get_messages(
-                    chat_id=m.chat.id,
-                    message_ids=range(
-                        m.reply_to_message.id,
-                        m.reply_to_message.id + int(tag),
-                    ),
-                    replies=0,
-                )
-                if not i.empty and not i.media
-            ]
-    else:
-        acak = random.choice(loanjing)
-        m_one = await c.get_messages(
-            chat_id=m.chat.id, message_ids=m.reply_to_message.id, replies=0
-        )
-        messages = [m_one]
-    try:
-        hasil = await quotly(messages, acak)
-        bio_sticker = BytesIO(hasil)
-        bio_sticker.name = "biosticker.webp"
-        await m.reply_sticker(bio_sticker)
-        await pros.delete()
-    except AttributeError:
-        return await pros.edit("Gunakan perintah atau balas pesan pengguna.")
-    except Exception as e:
-        return await pros.edit(cgr("err").format(em.gagal, e))
+        try:
+            hasil = await quotly(messages, acak)
+            bio_sticker = BytesIO(hasil)
+            bio_sticker.name = "biosticker.webp"
+            await m.reply_sticker(bio_sticker)
+            await pros.delete()
+        except AttributeError:
+            return await pros.edit("Gunakan perintah atau balas pesan pengguna.")
+        except Exception as e:
+            return await pros.edit(cgr("err").format(em.gagal, e))
+    except Exception:
+        await pros.edit("Gunakan perintah dengan cara memberikan warna, teks, atau membalas pesan")
 
 
 """
