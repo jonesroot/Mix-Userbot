@@ -353,8 +353,8 @@ async def quotly(messages, kolor):
         return r.read()
     else:
         raise QuotlyException(r.json())
-        
-        
+
+
 """
 async def quotly(messages, kolor):
     if not isinstance(messages, list):
