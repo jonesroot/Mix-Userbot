@@ -126,6 +126,8 @@ async def _(c: nlx, m):
         bio_sticker.name = "biosticker.webp"
         await m.reply_sticker(bio_sticker)
         await pros.delete()
+    except AttributeError as e:
+      return await pros.edit("Gunakan perintah atau balas pesan pengguna.")
     except Exception as e:
         return await pros.edit(cgr("err").format(em.gagal, e))
 
