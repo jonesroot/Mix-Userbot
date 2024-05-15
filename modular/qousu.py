@@ -73,7 +73,9 @@ async def _(c: nlx, m):
                     if org.id in DEVS:
                         await pros.edit(cgr("qot_3").format(em.gagal))
                         return
-                    rep = await c.get_messages(m.chat.id, m.reply_to_message.id, replies=0)
+                    rep = await c.get_messages(
+                        m.chat.id, m.reply_to_message.id, replies=0
+                    )
                     rep.from_user = org
                     messages = [rep]
                 except Exception as e:
@@ -131,7 +133,9 @@ async def _(c: nlx, m):
         except Exception as e:
             return await pros.edit(cgr("err").format(em.gagal, e))
     except Exception:
-        await pros.edit("Gunakan perintah dengan cara memberikan warna, teks, atau membalas pesan")
+        await pros.edit(
+            "Gunakan perintah dengan cara memberikan warna, teks, atau membalas pesan"
+        )
 
 
 """
