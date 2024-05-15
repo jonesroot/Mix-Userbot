@@ -58,7 +58,7 @@ async def _(c: nlx, m):
 
 @ky.ubot("q", sudo=True)
 async def _(c: nlx, m):
-    em = Emojik(c)
+    em = Emojik()
     em.initialize()
     acak = None
     messages = None
