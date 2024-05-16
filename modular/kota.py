@@ -16,7 +16,7 @@ __modles__ = "Negara"
 __help__ = """
  Kota
 • Perintah: `{0}negara` [query]
-• Penjelasan: Untuk mencari info tentang kota tersebut.
+• Penjelasan: Untuk mencari info tentang Negara tersebut.
 """
 
 
