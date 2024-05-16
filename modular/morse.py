@@ -132,10 +132,7 @@ def from_morse(morse):
 
 
 def text_to_speech(c, text, filename):
-    trans = Translator()
-    bhs = c._translate[c.me.id]["negara"]
-    src = await trans.detect(txt)
-    trsl = await trans(txt, sourcelang=src, targetlang=bhs)
+    bhs = c._translate[c.me.id]["negara"])
     gts = gtts.gTTS(text, lang=bhs)
     gts.save(filename)
 
