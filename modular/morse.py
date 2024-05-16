@@ -8,7 +8,6 @@
 """
 ################################################################
 
-import requests
 
 from Mix import *
 
@@ -71,21 +70,56 @@ async def _(c: nlx, m):
 
 
 MORSE_CODE_DICT = {
-    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
-    'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
-    'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
-    'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-    'Y': '-.--', 'Z': '--..',
-    '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', 
-    '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
-    ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-',
-    '(': '-.--.', ')': '-.--.-', ' ': '/'
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--..",
+    "0": "-----",
+    "1": ".----",
+    "2": "..---",
+    "3": "...--",
+    "4": "....-",
+    "5": ".....",
+    "6": "-....",
+    "7": "--...",
+    "8": "---..",
+    "9": "----.",
+    ", ": "--..--",
+    ".": ".-.-.-",
+    "?": "..--..",
+    "/": "-..-.",
+    "-": "-....-",
+    "(": "-.--.",
+    ")": "-.--.-",
+    " ": "/",
 }
 
 
 def to_morse(text):
-    return ' '.join(MORSE_CODE_DICT.get(char.upper(), '') for char in text)
-    
+    return " ".join(MORSE_CODE_DICT.get(char.upper(), "") for char in text)
+
 
 @ky.ubot("emorse", sudo=True)
 async def _(c: nlx, m):
@@ -93,10 +127,12 @@ async def _(c: nlx, m):
         text = m.reply_to_message.text
     else:
         text = m.text.split(maxsplit=1)[1] if len(n.text.split()) > 1 else None
-    
+
     if not text:
-        await m.reply("Silakan balas pesan atau masukkan teks setelah perintah /emorse.")
+        await m.reply(
+            "Silakan balas pesan atau masukkan teks setelah perintah /emorse."
+        )
         return
-    
+
     morse_text = to_morse(text)
     await m.reply(f"Sandi Morse:\n`{morse_text}`")
