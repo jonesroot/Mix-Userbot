@@ -69,6 +69,9 @@ async def _(c: nlx, m):
 """
 
 
+from Mix.core.parser import kode_bahasa
+
+
 MORSE_CODE_DICT = {
     "A": ".-",
     "B": "-...",
@@ -128,21 +131,28 @@ def from_morse(morse):
     return "".join(REVERSE_MORSE_CODE_DICT.get(char, "") for char in morse.split())
 
 
+def text_to_speech(text, filename):
+    bhs = c._translate[c.me.id]["negara"]
+    tts = gTTS(text=text, lang=bhs)
+    tts.save(filename)
+
+
 @ky.ubot("emorse", sudo=True)
 async def _(c: nlx, m):
     if m.reply_to_message:
         text = m.reply_to_message.text
     else:
-        text = m.text.split(maxsplit=1)[1] if len(n.text.split()) > 1 else None
-
+        text = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
+    
     if not text:
-        await m.reply(
-            "Silakan balas pesan atau masukkan teks setelah perintah /emorse."
-        )
+        await m.reply("Silakan balas pesan atau masukkan teks setelah perintah /emorse.")
         return
-
+    
     morse_text = to_morse(text)
-    await m.reply(f"Sandi Morse:\n`{morse_text}`")
+    audio_filename = "emorse_audio.mp3"
+    text_to_speech(morse_text, audio_filename)
+    await m.reply_audio(audio_filename, caption=morse_text)
+    os.remove(audio_filename)
 
 
 @ky.ubot("dmorse", sudo=True)
@@ -151,12 +161,13 @@ async def _(c: nlx, m):
         morse = m.reply_to_message.text
     else:
         morse = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
-
+    
     if not morse:
-        await m.reply(
-            "Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse."
-        )
+        await m.reply("Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse.")
         return
-
+    
     decoded_text = from_morse(morse)
-    await m.reply(f"Teks:\n`{decoded_text}`")
+    audio_filename = "dmorse_audio.mp3"
+    text_to_speech(decoded_text, audio_filename)
+    await m.reply_audio(audio_filename, caption=decoded_text)
+    os.remove(audio_filename)
