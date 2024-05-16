@@ -24,6 +24,7 @@ __help__ = """
 """
 
 
+"""
 @ky.ubot("emorse|dmorse")
 async def _(c: nlx, m):
     em = Emojik()
@@ -35,8 +36,14 @@ async def _(c: nlx, m):
     pros = await m.reply(cgr("proses").format(em.proses))
     if m.command[0] == "emorse":
 
-        uri = f"https://api.safone.dev/morse/encode?text={kimi}"
-        pot = requests.get(uri)
+        uri = f"https://gsamuel-morse-code-v1.p.rapidapi.com/"
+        payload = { "text": kimi }
+        headers = {
+          "content-type": "application/json",
+          "X-RapidAPI-Key": "24d6a3913bmsh3561d6af783658fp1a8240jsneef57a49ff14",
+          "X-RapidAPI-Host": "gsamuel-morse-code-v1.p.rapidapi.com"
+        }
+        pot = requests.post(url, json=payload, headers=headers)
         if pot.status_code == 200:
             res = pot.json().get("encoded")
             await m.reply(f"{em.sukses} Encode Morse\n\n`{res}`")
@@ -60,3 +67,36 @@ async def _(c: nlx, m):
         )
     await pros.delete()
     return
+"""
+
+
+MORSE_CODE_DICT = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+    'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+    'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+    'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+    'Y': '-.--', 'Z': '--..',
+    '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', 
+    '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
+    ', ': '--..--', '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-',
+    '(': '-.--.', ')': '-.--.-', ' ': '/'
+}
+
+
+def to_morse(text):
+    return ' '.join(MORSE_CODE_DICT.get(char.upper(), '') for char in text)
+    
+
+@ky.ubot("emorse", sudo=True)
+async def _(c: nlx, m):
+    if m.reply_to_message:
+        text = m.reply_to_message.text
+    else:
+        text = m.text.split(maxsplit=1)[1] if len(n.text.split()) > 1 else None
+    
+    if not text:
+        await m.reply("Silakan balas pesan atau masukkan teks setelah perintah /emorse.")
+        return
+    
+    morse_text = to_morse(text)
+    await m.reply(f"Sandi Morse:\n`{morse_text}`")
