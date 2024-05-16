@@ -24,9 +24,8 @@ async def kitatr(txt):
 async def get_joke():
     url = "https://jokes-always.p.rapidapi.com/joke"
     headers = {
-      "X-RapidAPI-Key": "24d6a3913bmsh3561d6af783658fp1a8240jsneef57a49ff14",
-      "X-RapidAPI-Host": "jokes-always.p.rapidapi.com"
-      
+        "X-RapidAPI-Key": "24d6a3913bmsh3561d6af783658fp1a8240jsneef57a49ff14",
+        "X-RapidAPI-Host": "jokes-always.p.rapidapi.com",
     }
     print(response.json())
     res = requests.get(url, headers=headers)
