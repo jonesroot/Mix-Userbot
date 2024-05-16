@@ -69,6 +69,12 @@ async def _(c: nlx, m):
 """
 
 
+import gtts
+from gpytranslate import Translator
+
+trans = Translator()
+
+
 MORSE_CODE_DICT = {
     "A": ".-",
     "B": "-...",
@@ -117,8 +123,6 @@ MORSE_CODE_DICT = {
 }
 
 
-import gtts
-
 REVERSE_MORSE_CODE_DICT = {v: k for k, v in MORSE_CODE_DICT.items()}
 
 
@@ -131,8 +135,10 @@ def from_morse(morse):
 
 
 def text_to_speech(c, text, filename):
+    src = await trans.detect(txt)
     bhs = c._translate[c.me.id]["negara"]
-    gts = gtts.gTTS(kata, lang=bhs)
+    trsl = await trans(txt, sourcelang=src, targetlang=bhs)
+    gts = gtts.gTTS(text, lang=bhs)
     gts.save(filename)
 
 
