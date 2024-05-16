@@ -29,7 +29,7 @@ async def get_joke():
     }
     res = requests.get(url, headers=headers)
     if res.status_code == 200:
-        return res.json()["data"]
+        return res.json()
     else:
         print(f"Error: {res.status_code} - {res.text}")
         return None
