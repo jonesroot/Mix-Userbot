@@ -22,10 +22,16 @@ async def kitatr(txt):
 
 
 async def get_joke():
-    url = "https://api.safone.dev/joke"
-    res = requests.get(url)
+    url = "https://jokes-always.p.rapidapi.com/joke"
+    headers = {
+      "X-RapidAPI-Key": "24d6a3913bmsh3561d6af783658fp1a8240jsneef57a49ff14",
+      "X-RapidAPI-Host": "jokes-always.p.rapidapi.com"
+      
+    }
+    print(response.json())
+    res = requests.get(url, headers=headers)
     if res.status_code == 200:
-        return res.json()["joke"]
+        return res.json()["data"]
     else:
         print(f"Error: {res.status_code} - {res.text}")
         return None
