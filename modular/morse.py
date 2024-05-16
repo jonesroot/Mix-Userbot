@@ -69,8 +69,6 @@ async def _(c: nlx, m):
 """
 
 
-from Mix.core.parser import kode_bahasa
-
 
 MORSE_CODE_DICT = {
     "A": ".-",
@@ -143,11 +141,13 @@ async def _(c: nlx, m):
         text = m.reply_to_message.text
     else:
         text = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
-    
+
     if not text:
-        await m.reply("Silakan balas pesan atau masukkan teks setelah perintah /emorse.")
+        await m.reply(
+            "Silakan balas pesan atau masukkan teks setelah perintah /emorse."
+        )
         return
-    
+
     morse_text = to_morse(text)
     audio_filename = "emorse_audio.mp3"
     text_to_speech(morse_text, audio_filename)
@@ -161,11 +161,13 @@ async def _(c: nlx, m):
         morse = m.reply_to_message.text
     else:
         morse = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
-    
+
     if not morse:
-        await m.reply("Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse.")
+        await m.reply(
+            "Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse."
+        )
         return
-    
+
     decoded_text = from_morse(morse)
     audio_filename = "dmorse_audio.mp3"
     text_to_speech(decoded_text, audio_filename)
