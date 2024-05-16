@@ -146,7 +146,7 @@ async def _(c: nlx, m):
 
 
 @ky.ubot("dmorse", sudo=True)
-async def _(c: nlx, n):
+async def _(c: nlx, m):
     if m.reply_to_message:
         morse = m.reply_to_message.text
     else:
