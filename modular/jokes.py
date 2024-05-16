@@ -25,7 +25,7 @@ async def get_joke():
         "X-RapidAPI-Host": "jokes-always.p.rapidapi.com",
     }
     res = requests.get(url, headers=headers)
-    print(f"{res}")
+    print(res.json().get("data"))
     if res.status_code == 200:
         return res.json().get("data")
     else:
