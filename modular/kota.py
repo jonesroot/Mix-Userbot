@@ -84,7 +84,7 @@ async def _(c: nlx, m):
         response_message += f"**Demonim:-** `{country_info['demonym']}`\n"
         response_message += f"**Nama ISO:-** `{country_info['iso']}`\n"
         response_message += f"**Bahasa:-** `{country_info['languages']}`\n"
-        response_message += f"**Nama Asli:-** `{country_info['native_name']}`\n"
+        #response_message += f"**Nama Asli:-** `{country_info['native_name']}`\n"
         response_message += f"**Populasi:-** `{country_info['population']}`\n"
         response_message += f"**Wilayah:-** `{country_info['region']}`\n"
         response_message += f"**Sub Wilayah:-** `{country_info['subregion']}`\n"
