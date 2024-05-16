@@ -117,6 +117,10 @@ MORSE_CODE_DICT = {
 }
 
 
+import gtts
+from gpytranslate import Translator
+
+
 REVERSE_MORSE_CODE_DICT = {v: k for k, v in MORSE_CODE_DICT.items()}
 
 
@@ -130,8 +134,8 @@ def from_morse(morse):
 
 def text_to_speech(c, text, filename):
     bhs = c._translate[c.me.id]["negara"]
-    tts = gTTS(text=text, lang=bhs)
-    tts.save(filename)
+    gts = gtts.gTTS(kata, lang=bhs)
+    gts.save(filename)
 
 
 @ky.ubot("emorse", sudo=True)
