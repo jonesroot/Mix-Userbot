@@ -48,7 +48,7 @@ async def _(c, m):
         if len(parts) != 2:
             await pft.edit(
                 cgr("lirk_1").format(
-                    em.gagal, em.sukses, m.command, em.sukses, m.command
+                    em.gagal, em.sukses, m.command[0], em.sukses, m.command
                 )
             )
             return
