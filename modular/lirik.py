@@ -47,9 +47,7 @@ async def _(c, m):
         parts = command.split("-")
         if len(parts) != 2:
             await pft.edit(
-                cgr("lirk_1").format(
-                    em.gagal, em.sukses, m.text, em.sukses, m.text
-                )
+                cgr("lirk_1").format(em.gagal, em.sukses, m.text, em.sukses, m.text)
             )
             return
 
