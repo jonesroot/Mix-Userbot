@@ -11,10 +11,12 @@ __help__ = """
 • Penjelasan: Untuk generate random joke.
 """
 
+
 async def kitatr(txt):
     cokk = Translator()
     gasin = await cokk.translate(txt, "en", "id")
     return gasin.text
+
 
 async def get_joke():
     url = "https://jokes-always.p.rapidapi.com/joke"
@@ -28,6 +30,7 @@ async def get_joke():
     else:
         print(f"Error: {res.status_code} - {res.text}")
         return None
+
 
 @ky.ubot("joke", sudo=True)
 async def _(c: nlx, m):
