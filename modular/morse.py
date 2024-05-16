@@ -70,7 +70,6 @@ async def _(c: nlx, m):
 
 
 import gtts
-from gpytranslate import Translator
 
 MORSE_CODE_DICT = {
     "A": ".-",
