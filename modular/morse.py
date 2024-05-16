@@ -125,7 +125,7 @@ def to_morse(text):
 
 
 def from_morse(morse):
-    return "".join(REVERSE_MORSE_CODE_DICT.get(char, '') for char in morse.split())
+    return "".join(REVERSE_MORSE_CODE_DICT.get(char, "") for char in morse.split())
 
 
 @ky.ubot("emorse", sudo=True)
@@ -151,10 +151,12 @@ async def _(c: nlx, n):
         morse = m.reply_to_message.text
     else:
         morse = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
-    
+
     if not morse:
-        await m.reply("Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse.")
+        await m.reply(
+            "Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse."
+        )
         return
-    
+
     decoded_text = from_morse(morse)
     await m.reply(f"Teks:\n`{decoded_text}`")
