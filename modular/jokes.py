@@ -27,7 +27,6 @@ async def get_joke():
         "X-RapidAPI-Key": "24d6a3913bmsh3561d6af783658fp1a8240jsneef57a49ff14",
         "X-RapidAPI-Host": "jokes-always.p.rapidapi.com",
     }
-    print(response.json())
     res = requests.get(url, headers=headers)
     if res.status_code == 200:
         return res.json()["data"]
