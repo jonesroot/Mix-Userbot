@@ -129,7 +129,7 @@ def from_morse(morse):
     return "".join(REVERSE_MORSE_CODE_DICT.get(char, "") for char in morse.split())
 
 
-def text_to_speech(text, filename):
+def text_to_speech(c, text, filename):
     bhs = c._translate[c.me.id]["negara"]
     tts = gTTS(text=text, lang=bhs)
     tts.save(filename)
@@ -150,7 +150,7 @@ async def _(c: nlx, m):
 
     morse_text = to_morse(text)
     audio_filename = "emorse_audio.mp3"
-    text_to_speech(morse_text, audio_filename)
+    text_to_speech(c, morse_text, audio_filename)
     await m.reply_audio(audio_filename, caption=morse_text)
     os.remove(audio_filename)
 
@@ -170,6 +170,6 @@ async def _(c: nlx, m):
 
     decoded_text = from_morse(morse)
     audio_filename = "dmorse_audio.mp3"
-    text_to_speech(decoded_text, audio_filename)
+    text_to_speech(c, decoded_text, audio_filename)
     await m.reply_audio(audio_filename, caption=decoded_text)
     os.remove(audio_filename)
