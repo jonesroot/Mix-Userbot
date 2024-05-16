@@ -118,8 +118,6 @@ MORSE_CODE_DICT = {
 
 
 import gtts
-from gpytranslate import Translator
-
 
 REVERSE_MORSE_CODE_DICT = {v: k for k, v in MORSE_CODE_DICT.items()}
 
