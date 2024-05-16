@@ -11,15 +11,10 @@ __help__ = """
 • Penjelasan: Untuk generate random joke.
 """
 
-
 async def kitatr(txt):
     cokk = Translator()
     gasin = await cokk.translate(txt, "en", "id")
-    sukses = []
-    for gs in gasin["raw"]["sentences"]:
-        sukses.append(gs["trans"])
-    return sukses[0]
-
+    return gasin.text
 
 async def get_joke():
     url = "https://jokes-always.p.rapidapi.com/joke"
@@ -29,11 +24,10 @@ async def get_joke():
     }
     res = requests.get(url, headers=headers)
     if res.status_code == 200:
-        return res.json()
+        return res.json().get()
     else:
         print(f"Error: {res.status_code} - {res.text}")
         return None
-
 
 @ky.ubot("joke", sudo=True)
 async def _(c: nlx, m):
@@ -41,5 +35,8 @@ async def _(c: nlx, m):
     em.initialize()
     pros = await m.reply(cgr("proses").format(em.proses))
     joke = await get_joke()
-    trbang = await kitatr(joke)
-    await pros.edit(f"{trbang}")
+    if joke:
+        trbang = await kitatr(joke)
+        await pros.edit(f"{trbang}")
+    else:
+        await pros.edit("Gagal mendapatkan joke.")
