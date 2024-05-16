@@ -94,4 +94,3 @@ async def _(c: nlx, m):
         await pros.edit(response_message, disable_web_page_preview=True)
     else:
         await pros.edit("Maaf, informasi tidak ditemukan.")
-
