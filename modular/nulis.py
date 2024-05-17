@@ -10,8 +10,8 @@ import os
 
 from PIL import Image, ImageDraw, ImageFont
 
-from Mix.core import *
 from Mix import *
+from Mix.core import *
 
 __modles__ = "Nulis"
 __help__ = get_cgr("help_nul")
