@@ -73,7 +73,7 @@ def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=1
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 32)
-    x, y = 125, 230
+    x, y = 280, 350
     paragraphs = text.split("\n")
 
     for paragraph in paragraphs:
