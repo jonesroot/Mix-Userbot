@@ -8,10 +8,11 @@
 
 
 import os
+
 import requests
 from removebg import RemoveBg
-from Mix import *
 
+from Mix import *
 
 __modles__ = "RemoveBg"
 __help__ = """
@@ -41,8 +42,8 @@ async def rbg_link(link):
     except Exception as e:
         print("Error:", str(e))
         return None
-  
-  
+
+
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
     em = Emojik()
