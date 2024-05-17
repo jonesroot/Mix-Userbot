@@ -6,12 +6,13 @@
 """
 ################################################################
 
-import os
-import requests
-from rembg import remove
-from PIL import Image
 import io
-from telegraph import upload_file
+import os
+
+import requests
+from PIL import Image
+from rembg import remove
+
 from Mix import *
 
 __modles__ = "RemoveBg"
@@ -37,11 +38,11 @@ async def _(c, m):
     em.initialize()
     rep = m.reply_to_message
     pros = await m.reply(cgr("proses").format(em.proses))
-    
+
     if rep and rep.photo:
         photo = rep.photo[-1]
         photo_file_path = await rep.download_media(photo)
-        
+
         try:
             hasil = await rem_bg(photo_file_path)
             if hasil:
@@ -53,20 +54,24 @@ async def _(c, m):
                     reply_to_message_id=ReplyCheck(m),
                 )
         except Exception as e:
-            await m.reply_text(f"Terjadi kesalahan: {str(e)}", reply_to_message_id=ReplyCheck(m))
+            await m.reply_text(
+                f"Terjadi kesalahan: {str(e)}", reply_to_message_id=ReplyCheck(m)
+            )
         finally:
             if os.path.exists(photo_file_path):
                 os.remove(photo_file_path)
     else:
         await m.reply_text("Mohon balas ke gambar.", reply_to_message_id=ReplyCheck(m))
-    
+
     await pros.delete()
+
 
 def remove_background_from_url(image_url, output_path):
     response = requests.get(image_url)
     input_image = Image.open(io.BytesIO(response.content))
     output_image = remove(input_image)
     output_image.save(output_path)
+
 
 # Contoh penggunaan
 # image_url = "https://example.com/input.jpg"
