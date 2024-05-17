@@ -63,18 +63,23 @@ async def _(c, m):
 
 
 import os
-
 from PIL import Image, ImageDraw, ImageFont
-
 from Mix.core import *
 
-
-def write_on_image(text, filename="output.jpg", line_spacing=40, enter_spacing=9):
+def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=9):
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 32)
-    x, y = 290, 350
-    max_width = template.width - 100
+    margin_left = 125
+    margin_right = 125
+    margin_top = 240
+    margin_bottom = 100
+
+    x = margin_left
+    y = margin_top
+    max_width = template.width - margin_left - margin_right
+    max_height = template.height - margin_top - margin_bottom
+
     paragraphs = text.split("\n")
 
     for paragraph in paragraphs:
@@ -92,10 +97,14 @@ def write_on_image(text, filename="output.jpg", line_spacing=40, enter_spacing=9
         for line in lines:
             draw.text((x, y), line, font=font, fill="black")
             y += h + line_spacing
+            if y + h > max_height:
+                break
+
         y += enter_spacing - line_spacing
+        if y > max_height:
+            break
 
     template.save(filename)
-
 
 @ky.ubot("nulis", sudo=True)
 async def _(c: nlx, m):
@@ -107,7 +116,7 @@ async def _(c: nlx, m):
     if not text:
         await m.reply("Silakan balas pesan atau masukkan teks setelah perintah.")
         return
-
+    
     output_filename = "output.jpg"
     write_on_image(text, output_filename)
     await m.reply_photo(photo=output_filename)
