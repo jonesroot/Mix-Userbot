@@ -22,7 +22,7 @@ Removal Background
 
 async def rem_bg(gambar):
     rmbeg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
-    hasil = rmbeg.remove_background_from_img_file("gambar")
+    hasil = rmbeg.remove_background_from_img_file(gambar)
     return hasil
 
 
