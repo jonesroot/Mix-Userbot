@@ -47,3 +47,4 @@ proxybroker
 pyquery
 aiogram
 assemblyai
+rembg
