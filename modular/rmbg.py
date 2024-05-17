@@ -11,7 +11,7 @@ import os
 
 import requests
 from PIL import Image
-from rembg import remove
+# from rembg import remove
 
 from Mix import *
 
