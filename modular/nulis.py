@@ -70,9 +70,9 @@ def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=9
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 32)
-    margin_left = 125
-    margin_right = 125
-    margin_top = 240
+    margin_left = 230
+    margin_right = 230
+    margin_top = 350
     margin_bottom = 100
 
     x = margin_left
