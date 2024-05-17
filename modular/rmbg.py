@@ -6,11 +6,11 @@
 """
 ################################################################
 
-import io
 import os
-import requests
+
 from PIL import Image
 from rembg import remove
+
 from Mix import *
 
 __modles__ = "RemoveBg"
@@ -19,6 +19,7 @@ Removal Background
 • Perintah: `{0}rmbg` [balas ke foto] atau `{0}rbg` [balas ke foto]
 • Penjelasan: Untuk menghapus latar belakang foto tersebut.
 """
+
 
 async def rem_bg(image_path):
     try:
@@ -31,6 +32,7 @@ async def rem_bg(image_path):
     except Exception as e:
         print(f"Error in rem_bg: {e}")
         return None
+
 
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
