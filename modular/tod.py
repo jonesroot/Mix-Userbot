@@ -120,6 +120,8 @@ dare_challenges = [
 
 @ky.ubot("truth", sudo=True)
 async def _(c: nlx, m):
+    em = Emojik()
+    em.initialize()
     if m.reply_to_message:
         user = m.reply_to_message.from_user
         fullname = (
@@ -141,6 +143,8 @@ async def _(c: nlx, m):
 
 @ky.ubot("dare", sudo=True)
 async def _(c: nlx, m):
+    em = Emojik()
+    em.initialize()
     if m.reply_to_message:
         user = m.reply_to_message.from_user
         fullname = (
