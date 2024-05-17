@@ -69,8 +69,8 @@ from PIL import Image, ImageDraw, ImageFont
 from Mix.core import *
 
 
-def write_on_image(text, filename="output.png"):
-    template = Image.open("bahan.png")
+def write_on_image(text, filename="output.jpg"):
+    template = Image.open("bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("font.ttf", 24)
     x, y = 50, 50
@@ -100,7 +100,7 @@ async def _(c: nlx, m):
     if not text:
         await m.reply("Silakan balas pesan atau masukkan teks setelah perintah.")
         return
-    output_filename = "output.png"
+    output_filename = "output.jpg"
     write_on_image(text, output_filename)
     await m.reply_photo(photo=output_filename)
     os.remove(output_filename)()
