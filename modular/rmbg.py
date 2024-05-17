@@ -6,11 +6,12 @@
 """
 ################################################################
 
+
 import os
-
+import requests
 from removebg import RemoveBg
-
 from Mix import *
+
 
 __modles__ = "RemoveBg"
 __help__ = """
@@ -20,12 +21,19 @@ Removal Background
 """
 
 
-async def rem_bg(gambar):
-    rmbeg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
-    hasil = rmbeg.remove_background_from_img_file(gambar)
+
+async def rem_bg(image_path):
+    rmbg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
+    hasil = rmbg.remove_background_from_img_file(image_path)
     return hasil
 
 
+async def rbg_link(link):
+    rmbg = RemoveBg("YOUR-API-KEY", "error.log")
+    hasil = rmbg.remove_background_from_img_url(link)
+    return hasil
+  
+  
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
     em = Emojik()
@@ -67,7 +75,7 @@ async def _(c: nlx, m):
                 if response.status_code == 200:
                     with open(output_image_path, "wb") as f:
                         f.write(response.content)
-                    hasil = await rem_bg(output_image_path)
+                    hasil = await rbg_link(image_url)
                     if hasil:
                         await m.reply_document(hasil, reply_to_message_id=ReplyCheck(m))
                         os.remove(hasil)
@@ -93,5 +101,4 @@ async def _(c: nlx, m):
                 "Mohon balas ke gambar atau masukkan URL gambar.",
                 reply_to_message_id=ReplyCheck(m),
             )
-
     await pros.delete()
