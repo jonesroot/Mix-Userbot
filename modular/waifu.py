@@ -134,6 +134,7 @@ async def _(c: nlx, m):
 
         if image_response.status_code == 200:
             await download_and_send_image(c, m, image_url, image_response.content)
+            await pros.delete()
         else:
             return await pros.edit(cgr("waif_2").format(em.gagal))
     else:
