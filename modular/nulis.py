@@ -63,8 +63,11 @@ async def _(c, m):
 
 
 import os
+
 from PIL import Image, ImageDraw, ImageFont
+
 from Mix.core import *
+
 
 def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=9):
     template = Image.open("Mix/core/bahan.jpg")
@@ -106,6 +109,7 @@ def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=9
 
     template.save(filename)
 
+
 @ky.ubot("nulis", sudo=True)
 async def _(c: nlx, m):
     if m.reply_to_message:
@@ -116,7 +120,7 @@ async def _(c: nlx, m):
     if not text:
         await m.reply("Silakan balas pesan atau masukkan teks setelah perintah.")
         return
-    
+
     output_filename = "output.jpg"
     write_on_image(text, output_filename)
     await m.reply_photo(photo=output_filename)
