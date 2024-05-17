@@ -94,12 +94,11 @@ def text_to_speech(c, text, filename):
 async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
-    pros = m.reply(cgr("proses").format(em.proses))
     if m.reply_to_message:
         text = m.reply_to_message.text
     else:
         text = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
-
+    pros = await m.reply(cgr("proses").format(em.proses))
     if not text:
         await pros.edit(
             f"{em.gagal} Silakan balas pesan atau masukkan teks setelah perintah /emorse."
@@ -118,18 +117,16 @@ async def _(c: nlx, m):
 async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
-    pros = await m.reply(cgr("proses").format(em.proses))
     if m.reply_to_message:
         morse = m.reply_to_message.text
     else:
         morse = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
-
+    pros = await m.reply(cgr("proses").format(em.proses))
     if not morse:
         await pros.edit(
             f"{em.gagal} Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse."
         )
         return
-
     decoded_text = from_morse(morse)
     audio_filename = "dmorse.ogg"
     text_to_speech(c, decoded_text, audio_filename)
