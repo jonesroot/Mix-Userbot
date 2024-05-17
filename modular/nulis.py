@@ -86,7 +86,7 @@ def write_on_image(text, filename="output.jpg"):
     lines.append(" ".join(line))
     for line in lines:
         draw.text((x, y), line, font=font, fill="black")
-        y += h + 10
+        y += h + 20
     template.save(filename)
 
 
