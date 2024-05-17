@@ -123,7 +123,7 @@ dare_challenges = [
 async def _(c: nlx, m):
     if m.reply_to_message:
         user = m.reply_to_message.from_user
-        fullname = f"{user.first_name user.last_name}" if user.last_name else f"{user.first_name}"
+        fullname = f"{user.first_name} {user.last_name}" if user.last_name else f"{user.first_name}"
         question = random.choice(truth_questions)
         await m.reply_text(
             f"{em.sukses} {fullname}, kamu harus menjawab dengan jujur:\n `{question}`",
@@ -140,6 +140,7 @@ async def _(c: nlx, m):
 async def _(c: nlx, m):
     if m.reply_to_message:
         user = m.reply_to_message.from_user
+        fullname = f"{user.first_name} {user.last_name}" if user.last_name else f"{user.first_name}"
         challenge = random.choice(dare_challenges)
         await m.reply_text(
             f"{em.sukses} {fullname}, kamu harus melakukan tantangan ini:\n `{challenge}`",
