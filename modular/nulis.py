@@ -69,11 +69,11 @@ from PIL import Image, ImageDraw, ImageFont
 from Mix.core import *
 
 
-def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=50):
+def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=10):
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 32)
-    x, y = 125, 240
+    x, y = 125, 230
     paragraphs = text.split("\n")
 
     for paragraph in paragraphs:
