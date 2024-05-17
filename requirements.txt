@@ -47,4 +47,4 @@ proxybroker
 pyquery
 aiogram
 assemblyai
-rembg
+removebg
