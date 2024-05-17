@@ -14,7 +14,7 @@ from PIL import Image
 
 from Mix import *
 
-# from rembg import remove
+from rembg import remove
 
 
 __modles__ = "RemoveBg"
