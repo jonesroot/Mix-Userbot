@@ -69,7 +69,7 @@ from PIL import Image, ImageDraw, ImageFont
 from Mix.core import *
 
 
-def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=150):
+def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=50):
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 32)
