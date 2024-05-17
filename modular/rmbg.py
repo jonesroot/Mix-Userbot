@@ -8,11 +8,9 @@
 
 import io
 import os
-
 import requests
 from PIL import Image
 from rembg import remove
-
 from Mix import *
 
 __modles__ = "RemoveBg"
@@ -22,15 +20,17 @@ Removal Background
 • Penjelasan: Untuk menghapus latar belakang foto tersebut.
 """
 
-
 async def rem_bg(image_path):
-    with open(image_path, "rb") as img_file:
-        input_image = Image.open(img_file)
-        output_image = remove(input_image)
-        output_image_path = "rmbg.png"
-        output_image.save(output_image_path)
-        return output_image_path
-
+    try:
+        with open(image_path, "rb") as img_file:
+            input_image = Image.open(img_file)
+            output_image = remove(input_image)
+            output_image_path = "rmbg.png"
+            output_image.save(output_image_path)
+            return output_image_path
+    except Exception as e:
+        print(f"Error in rem_bg: {e}")
+        return None
 
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
@@ -44,6 +44,7 @@ async def _(c: nlx, m):
         photo_file_path = await c.download_media(photo)
 
         try:
+            print(f"Downloaded photo to: {photo_file_path}")
             hasil = await rem_bg(photo_file_path)
             if hasil:
                 await m.reply_document(hasil, reply_to_message_id=ReplyCheck(m))
@@ -64,16 +65,3 @@ async def _(c: nlx, m):
         await m.reply_text("Mohon balas ke gambar.", reply_to_message_id=ReplyCheck(m))
 
     await pros.delete()
-
-
-def remove_background_from_url(image_url, output_path):
-    response = requests.get(image_url)
-    input_image = Image.open(io.BytesIO(response.content))
-    output_image = remove(input_image)
-    output_image.save(output_path)
-
-
-# Contoh penggunaan
-# image_url = "https://example.com/input.jpg"
-# output_image_path = "output.png"
-# remove_background_from_url(image_url, output_image_path)
