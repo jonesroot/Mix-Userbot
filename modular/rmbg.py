@@ -11,9 +11,11 @@ import os
 
 import requests
 from PIL import Image
-# from rembg import remove
 
 from Mix import *
+
+# from rembg import remove
+
 
 __modles__ = "RemoveBg"
 __help__ = """
