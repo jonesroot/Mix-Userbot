@@ -72,8 +72,8 @@ from Mix.core import *
 def write_on_image(text, filename="output.jpg"):
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
-    font = ImageFont.truetype("Mix/core/font.ttf", 28)
-    x, y = 100, 250
+    font = ImageFont.truetype("Mix/core/font.ttf", 30)
+    x, y = 125, 2200
     lines = []
     words = text.split(" ")
     line = []
@@ -86,7 +86,7 @@ def write_on_image(text, filename="output.jpg"):
     lines.append(" ".join(line))
     for line in lines:
         draw.text((x, y), line, font=font, fill="black")
-        y += h + 8
+        y += h + 10
     template.save(filename)
 
 
