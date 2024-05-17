@@ -18,6 +18,7 @@ __modles__ = "Nulis"
 __help__ = get_cgr("help_nul")
 
 
+"""
 async def nulis(text):
     meki = SafoneAPI()
     imgs = await meki.write(text)
@@ -62,3 +63,45 @@ async def _(c, m):
     except:
         pass
     return
+"""
+
+
+from PIL import Image, ImageDraw, ImageFont
+import os
+from Mix.core import *
+
+def write_on_image(text, filename='output.png'):
+    template = Image.open("kertas_template.png")
+    draw = ImageDraw.Draw(template)
+    font = ImageFont.truetype("fon.otf", 24)
+    x, y = 50, 50
+    lines = []
+    words = text.split(' ')
+    line = []
+    for word in words:
+        line.append(word)
+        w, h = draw.textsize(' '.join(line), font=font)
+        if w > template.width - 100:
+            lines.append(' '.join(line[:-1]))
+            line = [word]
+    lines.append(' '.join(line))
+    for line in lines:
+        draw.text((x, y), line, font=font, fill="black")
+        y += h + 10
+    template.save(filename)
+
+
+@ky.ubot("nulis", sudo=True)
+async def _(c: nlx, m):
+    if m.reply_to_message:
+        text = m.reply_to_message.text or m.reply_to_message.caption
+    else:
+        text = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
+
+    if not text:
+        await m.reply("Silakan balas pesan atau masukkan teks setelah perintah.")
+        return
+    output_filename = "output.png"
+    write_on_image(text, output_filename)
+    await m.reply_photo(photo=output_filename)
+    os.remove(output_filename)()
