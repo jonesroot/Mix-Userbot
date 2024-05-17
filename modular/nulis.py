@@ -70,9 +70,9 @@ from Mix.core import *
 
 
 def write_on_image(text, filename="output.png"):
-    template = Image.open("kertas_template.png")
+    template = Image.open("bahan.png")
     draw = ImageDraw.Draw(template)
-    font = ImageFont.truetype("fon.otf", 24)
+    font = ImageFont.truetype("font.ttf", 24)
     x, y = 50, 50
     lines = []
     words = text.split(" ")
