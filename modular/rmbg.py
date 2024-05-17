@@ -25,9 +25,11 @@ async def rem_bg(image_path):
     try:
         with open(image_path, "rb") as img_file:
             input_image = Image.open(img_file)
+            input_image = input_image.convert("RGBA")
             output_image = remove(input_image)
             output_image_path = "rmbg.png"
             output_image.save(output_image_path)
+            input_image.close()
             return output_image_path
     except Exception as e:
         print(f"Error in rem_bg: {e}")
