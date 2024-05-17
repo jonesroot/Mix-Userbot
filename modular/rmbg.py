@@ -7,6 +7,7 @@
 ################################################################
 
 import os
+
 from removebg import RemoveBg
 
 from Mix import *
@@ -23,6 +24,7 @@ async def rem_bg(gambar):
     rmbeg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
     hasil = rmbeg.remove_background_from_img_file("gambar")
     return hasil
+
 
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
