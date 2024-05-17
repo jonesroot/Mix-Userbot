@@ -33,7 +33,7 @@ async def rem_bg(image_path):
 
 
 @ky.ubot("rmbg|rbg", sudo=True)
-async def _(c, m):
+async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
     rep = m.reply_to_message
@@ -41,7 +41,7 @@ async def _(c, m):
 
     if rep and rep.photo:
         photo = rep.photo
-        photo_file_path = await rep.download_media(photo)
+        photo_file_path = await c.download_media(photo)
 
         try:
             hasil = await rem_bg(photo_file_path)
