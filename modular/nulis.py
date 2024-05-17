@@ -73,14 +73,14 @@ def write_on_image(text, filename="output.jpg"):
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 28)
-    x, y = 150, 140
+    x, y = 150, 200
     lines = []
     words = text.split(" ")
     line = []
     for word in words:
         line.append(word)
         w, h = draw.textsize(" ".join(line), font=font)
-        if w > template.width - 150:
+        if w > template.width - 200:
             lines.append(" ".join(line[:-1]))
             line = [word]
     lines.append(" ".join(line))
