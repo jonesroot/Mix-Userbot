@@ -8,10 +8,11 @@
 
 
 import os
+
 import requests
 from removebg import RemoveBg
-from Mix import *
 
+from Mix import *
 
 __modles__ = "RemoveBg"
 __help__ = """
@@ -19,7 +20,6 @@ Removal Background
 • Perintah: `{0}rmbg` [balas ke foto/gambar] atau `{0}rmbg` [tautan yang menuju ke sebuah gambar]
 • Penjelasan: Untuk menghapus latar belakang foto tersebut.
 """
-
 
 
 async def rem_bg(image_path):
@@ -32,8 +32,8 @@ async def rbg_link(link):
     rmbg = RemoveBg("YOUR-API-KEY", "error.log")
     hasil = rmbg.remove_background_from_img_url(link)
     return hasil
-  
-  
+
+
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
     em = Emojik()
