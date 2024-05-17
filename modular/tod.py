@@ -61,7 +61,7 @@ truth_questions = [
     "Apa hal yang paling kamu benci tentang temanmu?",
     "Apa hal yang paling aneh yang pernah kamu katakan kepada seseorang?",
     "Apa yang akan kamu lakukan jika hari ini adalah hari terakhir kamu hidup?",
-    "Apa hal yang paling membuatmu tersenyum?"
+    "Apa hal yang paling membuatmu tersenyum?",
 ]
 
 dare_challenges = [
@@ -114,16 +114,19 @@ dare_challenges = [
     "Buat lukisan wajah dengan krim cukur.",
     "Berlari di tempat selama 1 menit.",
     "Lakukan 10 lompatan bintang.",
-    "Ceritakan lelucon lucu yang pernah kamu dengar."
+    "Ceritakan lelucon lucu yang pernah kamu dengar.",
 ]
-
 
 
 @ky.ubot("truth", sudo=True)
 async def _(c: nlx, m):
     if m.reply_to_message:
         user = m.reply_to_message.from_user
-        fullname = f"{user.first_name} {user.last_name}" if user.last_name else f"{user.first_name}"
+        fullname = (
+            f"{user.first_name} {user.last_name}"
+            if user.last_name
+            else f"{user.first_name}"
+        )
         question = random.choice(truth_questions)
         await m.reply_text(
             f"{em.sukses} {fullname}, kamu harus menjawab dengan jujur:\n `{question}`",
@@ -140,7 +143,11 @@ async def _(c: nlx, m):
 async def _(c: nlx, m):
     if m.reply_to_message:
         user = m.reply_to_message.from_user
-        fullname = f"{user.first_name} {user.last_name}" if user.last_name else f"{user.first_name}"
+        fullname = (
+            f"{user.first_name} {user.last_name}"
+            if user.last_name
+            else f"{user.first_name}"
+        )
         challenge = random.choice(dare_challenges)
         await m.reply_text(
             f"{em.sukses} {fullname}, kamu harus melakukan tantangan ini:\n `{challenge}`",
