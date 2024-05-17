@@ -73,7 +73,7 @@ def write_on_image(text, filename="output.jpg"):
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 24)
-    x, y = 120, 150
+    x, y = 150, 150
     lines = []
     words = text.split(" ")
     line = []
@@ -86,7 +86,7 @@ def write_on_image(text, filename="output.jpg"):
     lines.append(" ".join(line))
     for line in lines:
         draw.text((x, y), line, font=font, fill="black")
-        y += h + 18
+        y += h + 10
     template.save(filename)
 
 
@@ -103,4 +103,4 @@ async def _(c: nlx, m):
     output_filename = "output.jpg"
     write_on_image(text, output_filename)
     await m.reply_photo(photo=output_filename)
-    os.remove(output_filename)()
+    os.remove(output_filename)
