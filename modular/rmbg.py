@@ -40,7 +40,7 @@ async def _(c, m):
     pros = await m.reply(cgr("proses").format(em.proses))
 
     if rep and rep.photo:
-        photo = rep.photo[-1]
+        photo = rep.photo
         photo_file_path = await rep.download_media(photo)
 
         try:
