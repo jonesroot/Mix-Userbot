@@ -95,7 +95,7 @@ async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
     if m.reply_to_message:
-        text = m.reply_to_message.text
+        text = m.reply_to_message.text or m.reply_to_message.caption
     else:
         text = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
     pros = await m.reply(cgr("proses").format(em.proses))
@@ -118,7 +118,7 @@ async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
     if m.reply_to_message:
-        morse = m.reply_to_message.text
+        morse = m.reply_to_message.text or m.reply_to_message.caption
     else:
         morse = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
     pros = await m.reply(cgr("proses").format(em.proses))
