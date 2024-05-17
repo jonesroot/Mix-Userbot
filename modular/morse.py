@@ -9,8 +9,9 @@
 ################################################################
 
 
-from Mix import *
 import gtts
+
+from Mix import *
 
 __modles__ = "Morse"
 __help__ = """
@@ -100,7 +101,8 @@ async def _(c: nlx, m):
         text = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
 
     if not text:
-        await pros.edit(f"{em.gagal} Silakan balas pesan atau masukkan teks setelah perintah /emorse."
+        await pros.edit(
+            f"{em.gagal} Silakan balas pesan atau masukkan teks setelah perintah /emorse."
         )
         return
 
@@ -123,7 +125,8 @@ async def _(c: nlx, m):
         morse = m.text.split(maxsplit=1)[1] if len(m.text.split()) > 1 else None
 
     if not morse:
-        await pros.edit(f"{em.gagal} Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse."
+        await pros.edit(
+            f"{em.gagal} Silakan balas pesan atau masukkan sandi Morse setelah perintah /dmorse."
         )
         return
 
