@@ -7,10 +7,7 @@
 ################################################################
 
 import os
-from io import BytesIO
 
-from pyrogram.types import InputMediaPhoto
-from SafoneAPI import SafoneAPI
 
 from Mix import *
 
@@ -66,25 +63,28 @@ async def _(c, m):
 """
 
 
-from PIL import Image, ImageDraw, ImageFont
 import os
+
+from PIL import Image, ImageDraw, ImageFont
+
 from Mix.core import *
 
-def write_on_image(text, filename='output.png'):
+
+def write_on_image(text, filename="output.png"):
     template = Image.open("kertas_template.png")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("fon.otf", 24)
     x, y = 50, 50
     lines = []
-    words = text.split(' ')
+    words = text.split(" ")
     line = []
     for word in words:
         line.append(word)
-        w, h = draw.textsize(' '.join(line), font=font)
+        w, h = draw.textsize(" ".join(line), font=font)
         if w > template.width - 100:
-            lines.append(' '.join(line[:-1]))
+            lines.append(" ".join(line[:-1]))
             line = [word]
-    lines.append(' '.join(line))
+    lines.append(" ".join(line))
     for line in lines:
         draw.text((x, y), line, font=font, fill="black")
         y += h + 10
