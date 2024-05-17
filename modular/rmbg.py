@@ -8,11 +8,10 @@
 
 
 import os
-
 import requests
 from removebg import RemoveBg
-
 from Mix import *
+
 
 __modles__ = "RemoveBg"
 __help__ = """
@@ -25,7 +24,8 @@ Removal Background
 async def rem_bg(image_path):
     try:
         rmbg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
-        hasil = rmbg.remove_background_from_img_file(image_path)
+        rmbg.remove_background_from_img_file(image_path)
+        hasil = "no-bg.png"
         return hasil
     except Exception as e:
         print("Error:", str(e))
@@ -35,13 +35,14 @@ async def rem_bg(image_path):
 async def rbg_link(link):
     try:
         rmbg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
-        hasil = rmbg.remove_background_from_img_url(link)
+        rmbg.remove_background_from_img_url(link)
+        hasil = "no-bg.png"
         return hasil
     except Exception as e:
         print("Error:", str(e))
         return None
-
-
+  
+  
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
     em = Emojik()
