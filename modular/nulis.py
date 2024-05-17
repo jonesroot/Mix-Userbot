@@ -63,15 +63,18 @@ async def _(c, m):
 
 
 import os
+
 from PIL import Image, ImageDraw, ImageFont
+
 from Mix.core import *
+
 
 def write_on_image(text, filename="output.jpg", line_spacing=50, enter_spacing=150):
     template = Image.open("Mix/core/bahan.jpg")
     draw = ImageDraw.Draw(template)
     font = ImageFont.truetype("Mix/core/font.ttf", 32)
     x, y = 125, 240
-    paragraphs = text.split('\n')
+    paragraphs = text.split("\n")
 
     for paragraph in paragraphs:
         lines = []
@@ -102,9 +105,8 @@ async def _(c: nlx, m):
     if not text:
         await m.reply("Silakan balas pesan atau masukkan teks setelah perintah.")
         return
-    
+
     output_filename = "output.jpg"
     write_on_image(text, output_filename)
     await m.reply_photo(photo=output_filename)
     os.remove(output_filename)
-
