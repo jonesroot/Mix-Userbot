@@ -7,8 +7,7 @@
 ################################################################
 
 import os
-
-import requests
+from removebg import RemoveBg
 
 from Mix import *
 
@@ -20,31 +19,10 @@ Removal Background
 """
 
 
-async def rem_bg(image_path):
-    url = "https://api.removal.ai/3.0/remove"
-    headers = {
-        "accept": "application/json",
-        "Rm-Token": "45FA9185-021A-E498-FF97-1A8DB4C76666",
-    }
-    files = {"image_file": (image_path, open(image_path, "rb"), "image/jpeg")}
-
-    response = requests.post(url, headers=headers, files=files)
-
-    if response.status_code == 200:
-        data = response.json()
-        high_res_url = data.get("high_resolution")
-
-        if high_res_url:
-            high_res_image = requests.get(high_res_url)
-            output_image_path = "rmbg.png"
-            with open(output_image_path, "wb") as f:
-                f.write(high_res_image.content)
-            return output_image_path
-        else:
-            raise ValueError("Gambar resolusi tinggi tidak ditemukan dalam respons.")
-    else:
-        response.raise_for_status()
-
+async def rem_bg(gambar):
+    rmbeg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
+    hasil = rmbeg.remove_background_from_img_file("gambar")
+    return hasil
 
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: nlx, m):
