@@ -61,9 +61,9 @@ async def digikes_(q):
                 LOGGER.error(f"An error occurred while processing dialog: {e}")
     except ChamnelPrivate:
         if dialog:
-          await nlx.leave_chat(dialog.chat.id)
+            await nlx.leave_chat(dialog.chat.id)
         else:
-          pass
+            pass
     except Exception as e:
         LOGGER.error(f"An error occurred while getting dialogs: {e}")
 
