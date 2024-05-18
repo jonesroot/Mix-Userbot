@@ -331,9 +331,16 @@ async def send_photo_and_get_anime(photo_path, c):
     try:
         await c.unblock_user(bod)
         jir = await c.resolve_peer(bod)
-        await c.send_message(bod, "/start")
+        rsp = await c.invoke(
+          StartBot(
+              bot=jir,
+              peer=jir,
+              random_id=c.rnd_id(),
+              start_param="start",
+            )
+        )
         await c.send_photo(bod, photo_path)
-        await asyncio.sleep(5)
+        await asyncio.sleep(15)
         try:
             async for jmbt in nlx.search_messages(
                 bod, filter=enums.MessagesFilter.PHOTO, limit=1
@@ -341,7 +348,13 @@ async def send_photo_and_get_anime(photo_path, c):
                 if jmbt.photo:
                     file_path = await c.download_media(jmbt.photo.file_id)
                     await c.invoke(DeleteHistory(peer=jir, max_id=0, revoke=True))
-                    return file_path
+                await c.send_photo(
+                    m.chat.id,
+                    anime_photo_path,
+                    caption=f"{em.sukses} Berhasil!",
+                    reply_to_message_id=ReplyCheck(m),
+                )
+                os.remove(anime_photo_path)
         except Exception as e:
             print("Error:", str(e))
             return None
@@ -362,16 +375,7 @@ async def _(c: nlx, m):
         photo_file_path = await c.download_media(photo)
 
         try:
-            anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
-            await asyncio.sleep(7)
-            if anime_photo_path:
-                await c.send_photo(
-                    m.chat.id,
-                    anime_photo_path,
-                    caption=f"{em.sukses} Berhasil!",
-                    reply_to_message_id=ReplyCheck(m),
-                )
-                os.remove(anime_photo_path)
+            await send_photo_and_get_anime(photo_file_path, c)
         except Exception as e:
             await m.reply_text(
                 f"Terjadi kesalahan: {str(e)}", reply_to_message_id=ReplyCheck(m)
