@@ -323,10 +323,10 @@ async def transcribe_audio(c: nlx, m):
 
 
 from pyrogram import enums
-from pyrogram.raw.functions.messages import DeleteHistory
+from pyrogram.raw.functions.messages import DeleteHistory, StartBot
 
 
-async def send_photo_and_get_anime(photo_path, c):
+async def send_photo_and_get_anime(photo_path, c, m):
     bod = "mix_22225_bot"
     try:
         await c.unblock_user(bod)
@@ -341,23 +341,19 @@ async def send_photo_and_get_anime(photo_path, c):
         )
         await c.send_photo(bod, photo_path)
         await asyncio.sleep(15)
-        try:
-            async for jmbt in nlx.search_messages(
-                bod, filter=enums.MessagesFilter.PHOTO, limit=1
-            ):
-                if jmbt.photo:
-                    await c.download_media(jmbt.photo.file_id)
-                    await c.invoke(DeleteHistory(peer=jir, max_id=0, revoke=True))
+        async for jmbt in c.search_messages(
+            bod, filter=enums.MessagesFilter.PHOTO, limit=1
+        ):
+            if jmbt.photo:
+                file_path = await c.download_media(jmbt.photo.file_id)
+                await c.invoke(DeleteHistory(peer=jir, max_id=0, revoke=True))
                 await c.send_photo(
                     m.chat.id,
-                    anime_photo_path,
+                    file_path,
                     caption=f"{em.sukses} Berhasil!",
                     reply_to_message_id=ReplyCheck(m),
                 )
-                os.remove(anime_photo_path)
-        except Exception as e:
-            print("Error:", str(e))
-            return None
+                os.remove(file_path)
     except Exception as e:
         print("Error:", str(e))
         return None
@@ -375,7 +371,7 @@ async def _(c: nlx, m):
         photo_file_path = await c.download_media(photo)
 
         try:
-            await send_photo_and_get_anime(photo_file_path, c)
+            await send_photo_and_get_anime(photo_file_path, c, m)
         except Exception as e:
             await m.reply_text(
                 f"Terjadi kesalahan: {str(e)}", reply_to_message_id=ReplyCheck(m)
