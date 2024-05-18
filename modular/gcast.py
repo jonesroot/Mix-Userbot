@@ -61,7 +61,7 @@ async def digikes_(q):
         LOGGER.error(f"An error occurred while getting dialogs: {e}")
 
     return chats
-    
+
 
 @ky.ubot("gcast", sudo=True)
 async def _(c: nlx, m):
