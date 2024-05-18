@@ -332,6 +332,7 @@ async def _(c: nlx, m):
     os.remove(photo)
     return
 
+
 @ky.ubot("userstats|me", sudo=True)
 @ky.devs("userstats")
 async def _(c, m):
@@ -409,6 +410,7 @@ Saya mengalami masalah dengan chat ini:
             dimari,
         )
     )
+
 
 """
 @ky.ubot("me|userstats", sudo=True)
