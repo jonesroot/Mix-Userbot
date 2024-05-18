@@ -2,7 +2,6 @@ import asyncio
 import os
 import re
 
-
 from Mix import *
 
 __modles__ = "Convert"
@@ -330,16 +329,17 @@ async def send_photo_and_get_anime(photo_path, c):
         await c.send_photo(bod, photo_path)
         await asyncio.sleep(7)
         try:
-          async for jmbt in c.search_messages(bod, limit=5):
-              if jmbt.photo:
-                  file_path = await c.download_media(message.photo    .file_id)
-                  return file_path
+            async for jmbt in c.search_messages(bod, limit=5):
+                if jmbt.photo:
+                    file_path = await c.download_media(message.photo.file_id)
+                    return file_path
         except Exception as e:
-          print("Error:", str(e))
-          return None
+            print("Error:", str(e))
+            return None
     except Exception as e:
         print("Error:", str(e))
         return None
+
 
 @ky.ubot("toanime", sudo=True)
 async def _(c: nlx, m):
@@ -377,7 +377,12 @@ async def _(c: nlx, m):
 
     await pros.delete()
 
-app = Client("anime_convert_bot", api_id='YOUR_API_ID', api_hash='YOUR_API_HASH', bot_token='YOUR_BOT_TOKEN')
+
+app = Client(
+    "anime_convert_bot",
+    api_id="YOUR_API_ID",
+    api_hash="YOUR_API_HASH",
+    bot_token="YOUR_BOT_TOKEN",
+)
 
 app.run()
-
