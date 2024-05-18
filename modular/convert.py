@@ -12,6 +12,7 @@ __modles__ = "Convert"
 __help__ = get_cgr("help_konpert")
 
 
+"""
 aai.settings.api_key = "e28239cb6ecc4d0090f36711b11e247a"
 
 
@@ -140,6 +141,7 @@ async def _(c: nlx, m):
         await pros.edit(cgr("konpert_15").format(em.gagal))
         return
     await pros.delete()
+"""
 
 
 @ky.ubot("toimg", sudo=True)
@@ -454,3 +456,71 @@ async def transcribe_audio(c: nlx, m):
         await pros.edit(
             f"{em.gagal} Mohon balas pesan dengan audio atau berikan URL audio yang valid untuk mentranskripsinya."
         )
+
+
+import os
+import requests
+import asyncio
+from Mix import *
+
+
+external_bot_username = 'owner_of_this_allrobot'
+channels = ["@fasngon", "@TBEH_TOOL"]
+
+
+async def join_channels():
+    for channel in channels:
+        await nlx.join_chat(channel)
+
+async def send_photo_and_get_anime(photo_path, c):
+    try:
+        await c.send_message(external_bot_username, '/start')
+        await join_channels()
+
+        await c.send_photo(external_bot_username, photo_path)
+        await asyncio.sleep(3)
+
+        async for message in c.get_chat_history(external_bot_username, limit=1):
+            if message.photo:
+                file_path = await c.download_media(message.photo.file_id)
+                return file_path
+    except Exception as e:
+        print("Error:", str(e))
+        return None
+
+
+@ky.ubot("toanime", sudo=True)
+async def _(c: nlx, m):
+    em = Emojik()
+    em.initialize()
+    rep = m.reply_to_message
+    pros = await m.reply(cgr("proses").format(em.proses))
+
+    if rep.photo:
+        photo = rep.photo.file_i
+        photo_file_path = await c.download_media(photo)
+
+        try:
+            anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
+            if anime_photo_path:
+                await m.reply_document(anime_photo_path, reply_to_message_id=ReplyCheck(m))
+                os.remove(anime_photo_path)
+            else:
+                await m.reply_text(
+                    "Maaf, terjadi kesalahan dalam mengonversi gambar ke gaya anime.",
+                    reply_to_message_id=ReplyCheck(m),
+                )
+        except Exception as e:
+            await m.reply_text(
+                f"Terjadi kesalahan: {str(e)}", reply_to_message_id=ReplyCheck(m)
+            )
+        finally:
+            if os.path.exists(photo_file_path):
+                os.remove(photo_file_path)
+    else:
+        await m.reply_text(
+            "Mohon balas ke gambar untuk mengonversinya ke gaya anime.",
+            reply_to_message_id=ReplyCheck(m),
+        )
+
+    await pros.delete()
