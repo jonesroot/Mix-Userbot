@@ -517,7 +517,7 @@ async def _(c: nlx, m):
         finally:
             if os.path.exists(photo_file_path):
                 os.remove(photo_file_path)
-                
+
     else:
         await m.reply_text(
             "Mohon balas ke gambar untuk mengonversinya ke gaya anime.",
