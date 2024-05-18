@@ -327,6 +327,8 @@ from pyrogram.raw.functions.messages import DeleteHistory, StartBot
 
 
 async def send_photo_and_get_anime(photo_path, c, m):
+    em = Emojik()
+    em.initialize()
     bod = "mix_22225_bot"
     try:
         await c.unblock_user(bod)
