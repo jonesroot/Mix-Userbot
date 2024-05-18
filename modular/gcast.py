@@ -111,7 +111,7 @@ async def _(c: nlx, m):
                     else:
                         await msg.edit(updated_content)
                     await asyncio.sleep(0.3)
-                except Exception as e:
+                except Exception:
                     failed += 1
                     updated_content = cgr("gcs_2").format(
                         em.proses, em.sukses, done, em.gagal, failed
