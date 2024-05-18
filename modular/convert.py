@@ -327,19 +327,19 @@ async def send_photo_and_get_anime(photo_path, c):
     bod = "mix_22225_bot"
     try:
         await c.send_message(bod, "/start")
-        await nlx.join_chat("gokilsupport")
-        await nlx.join_chat("squirtinyourpussy")
         await c.send_photo(bod, photo_path)
-        await asyncio.sleep(10)
-
-        async for message in c.search_messages(bod, limit=1):
-            if message.photo:
-                file_path = await c.download_media(message.photo)
-                return file_path
+        await asyncio.sleep(7)
+        try:
+          async for jmbt in c.search_messages(bod, limit=5):
+              if jmbt.photo:
+                  file_path = await c.download_media(message.photo    .file_id)
+                  return file_path
+        except Exception as e:
+          print("Error:", str(e))
+          return None
     except Exception as e:
         print("Error:", str(e))
         return None
-
 
 @ky.ubot("toanime", sudo=True)
 async def _(c: nlx, m):
@@ -369,7 +369,6 @@ async def _(c: nlx, m):
         finally:
             if os.path.exists(photo_file_path):
                 os.remove(photo_file_path)
-
     else:
         await m.reply_text(
             "Mohon balas ke gambar untuk mengonversinya ke gaya anime.",
@@ -377,3 +376,8 @@ async def _(c: nlx, m):
         )
 
     await pros.delete()
+
+app = Client("anime_convert_bot", api_id='YOUR_API_ID', api_hash='YOUR_API_HASH', bot_token='YOUR_BOT_TOKEN')
+
+app.run()
+
