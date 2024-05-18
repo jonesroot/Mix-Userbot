@@ -2,145 +2,15 @@ import asyncio
 import os
 import re
 
-import assemblyai as aai
-
 from Mix import *
+
 
 __modles__ = "Convert"
 __help__ = get_cgr("help_konpert")
 
 
-"""
-aai.settings.api_key = "e28239cb6ecc4d0090f36711b11e247a"
-
-
-async def process_toanime_command(m, image, style):
-    em = Emojik()
-    em.initialize()
-    user = m.from_user
-    mention = user.mention
-    tipe_map = {"webtoon": "webtoon", "face2paint": "face2paint", "paprika": "paprika"}
-    if style not in tipe_map:
-        available_types = "\n• ".join([f"`{tipe_map[key]}`" for key in tipe_map])
-        error_message = cgr("konpert_1").format(em.gagal, available_types)
-        await m.reply(error_message)
-        return
-    files = {"image": open(image, "rb")}
-    payload = {"style": style}
-    headers = {
-        "X-RapidAPI-Key": "24d6a3913bmsh3561d6af783658fp1a8240jsneef57a49ff14",
-        "X-RapidAPI-Host": "phototoanime1.p.rapidapi.com",
-    }
-    response = requests.post(
-        "https://phototoanime1.p.rapidapi.com/photo-to-anime",
-        data=payload,
-        files=files if isinstance(image, str) else None,
-        headers=headers,
-    )
-    if response.status_code == 200:
-        if "body" in response.json() and "imageUrl" in response.json()["body"]:
-            result_image_url = response.json()["body"]["imageUrl"]
-            result_image_response = requests.get(result_image_url)
-            if result_image_response.status_code == 200:
-                with open("hasil_konversi.jpg", "wb") as f:
-                    f.write(result_image_response.content)
-                await m.reply_photo(
-                    "hasil_konversi.jpg",
-                    caption=cgr("konpert_5").format(em.sukses, mention),
-                )
-                os.remove("hasil_konversi.jpg")
-            else:
-                await m.reply(cgr("konpert_16").format(em.gagal))
-        else:
-            await m.reply(cgr("konpert_17").format(em.gagal))
-    else:
-        await m.reply(cgr("konpert_18").format(em.gagal))
-
-
-async def proccess_link_to_anime(m, url, style):
-    em = Emojik()
-    em.initialize()
-    user = m.from_user
-    mention = user.mention
-    tipe_map = {"webtoon": "webtoon", "face2paint": "face2paint", "paprika": "paprika"}
-    if style not in tipe_map:
-        available_types = "\n• ".join([f"`{tipe_map[key]}`" for key in tipe_map])
-        error_message = cgr("konpert_1").format(em.gagal, available_types)
-        await m.reply(error_message)
-        return
-    payload = {"url": url, "style": style}
-    headers = {
-        "X-RapidAPI-Key": "24d6a3913bmsh3561d6af783658fp1a8240jsneef57a49ff14",
-        "X-RapidAPI-Host": "phototoanime1.p.rapidapi.com",
-    }
-
-    response = requests.post(
-        "https://phototoanime1.p.rapidapi.com/photo-to-anime",
-        data=payload,
-        headers=headers,
-    )
-    if response.status_code == 200:
-        if "body" in response.json() and "imageUrl" in response.json()["body"]:
-            result_image_url = response.json()["body"]["imageUrl"]
-            result_image_response = requests.get(result_image_url)
-            if result_image_response.status_code == 200:
-                with open("hasil_konversi.jpg", "wb") as f:
-                    f.write(result_image_response.content)
-                await m.reply_photo(
-                    "hasil_konversi.jpg",
-                    caption=cgr("konpert_5").format(em.sukses, mention),
-                )
-                os.remove("hasil_konversi.jpg")
-            else:
-                await m.reply(cgr("konpert_16").format(em.gagal))
-        else:
-            await m.reply(cgr("konpert_17").format(em.gagal))
-    else:
-        await m.reply(cgr("konpert_18").format(em.gagal))
-
-
-@ky.ubot("style-anime", sudo=True)
-async def show_available_styles(c: nlx, m):
-    em = Emojik()
-    em.initialize()
-    tipe_map = {"webtoon": "webtoon", "face2paint": "face2paint", "paprika": "paprika"}
-    available_types = f"\n{em.sukses} ".join([f"`{tipe_map[key]}`" for key in tipe_map])
-    message = cgr("konpert_19").format(em.alive, em.sukses, available_types)
-    await m.reply(message)
-
-
-@ky.ubot("toanime", sudo=True)
-async def _(c: nlx, m):
-    em = Emojik()
-    em.initialize()
-    rep = m.reply_to_message
-    pros = await m.reply(cgr("konpert_2").format(em.proses))
-    if rep:
-        if len(m.command) == 1 and rep.photo:
-            style = random.choice(["face2paint", "paprika", "webtoon"])
-            image = await c.download_media(
-                rep.photo.file_id, file_name=f"{c.me.id}.jpg"
-            )
-        elif len(m.command) == 2 and rep.photo:
-            style = m.command[1]
-            image = await c.download_media(
-                rep.photo.file_id, file_name=f"{c.me.id}.jpg"
-            )
-        await process_toanime_command(m, image, style)
-    elif not rep:
-        if len(m.command) == 2:
-            style = random.choice(["face2paint", "paprika", "webtoon"])
-            url = m.command[1]
-        elif len(m.command) == 3:
-            style = m.command[1]
-            url = m.command[2]
-        await proccess_link_to_anime(m, url, style)
-    else:
-        await pros.edit(cgr("konpert_15").format(em.gagal))
-        return
-    await pros.delete()
-"""
-
+bod = "owner_of_this_allrobot"
+channels = ["@fasngon", "@TBEH_TOOL"]
 
 @ky.ubot("toimg", sudo=True)
 async def _(c: nlx, message):
@@ -456,15 +326,6 @@ async def transcribe_audio(c: nlx, m):
         )
 
 
-import asyncio
-import os
-
-from Mix import *
-
-external_bot_username = "owner_of_this_allrobot"
-channels = ["@fasngon", "@TBEH_TOOL"]
-
-
 async def join_channels():
     for channel in channels:
         await nlx.join_chat(channel)
@@ -472,13 +333,13 @@ async def join_channels():
 
 async def send_photo_and_get_anime(photo_path, c):
     try:
-        await c.send_message(external_bot_username, "/start")
+        await c.send_message(bod, "/start")
         await join_channels()
 
-        await c.send_photo(external_bot_username, photo_path)
+        await c.send_photo(bod, photo_path)
         await asyncio.sleep(7)
 
-        async for message in c.get_chat_history(external_bot_username, limit=1):
+        async for message in c.get_chat_history(bod, limit=1):
             if message.photo:
                 file_path = await c.download_media(message.photo.file_id)
                 return file_path
@@ -501,7 +362,7 @@ async def _(c: nlx, m):
         try:
             anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
             if anime_photo_path:
-                await m.reply_document(
+                await c.send_photo(
                     anime_photo_path, reply_to_message_id=ReplyCheck(m)
                 )
                 os.remove(anime_photo_path)
@@ -517,7 +378,7 @@ async def _(c: nlx, m):
         finally:
             if os.path.exists(photo_file_path):
                 os.remove(photo_file_path)
-
+                
     else:
         await m.reply_text(
             "Mohon balas ke gambar untuk mengonversinya ke gaya anime.",
