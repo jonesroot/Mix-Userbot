@@ -496,7 +496,7 @@ async def _(c: nlx, m):
     pros = await m.reply(cgr("proses").format(em.proses))
 
     if rep.photo:
-        photo = rep.photo.file_i
+        photo = rep.photo.file_id
         photo_file_path = await c.download_media(photo)
 
         try:
