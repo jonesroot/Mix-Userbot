@@ -323,6 +323,7 @@ async def transcribe_audio(c: nlx, m):
 
 
 from pyrogram import enums
+from pyrogram.raw.functions.messages import DeleteHistory
 
 
 async def send_photo_and_get_anime(photo_path, c):
@@ -337,6 +338,7 @@ async def send_photo_and_get_anime(photo_path, c):
             ):
                 if jmbt.photo:
                     file_path = await c.download_media(jmbt.photo.file_id)
+                    await c.invoke(DeleteHistory(peer=xin, max_id=0, revoke=True))
                     return file_path
         except Exception as e:
             print("Error:", str(e))
