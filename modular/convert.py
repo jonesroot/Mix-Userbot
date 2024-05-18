@@ -2,6 +2,7 @@ import asyncio
 import os
 import re
 
+from pyrogram.enums import MessagesFilter
 from Mix import *
 
 __modles__ = "Convert"
@@ -329,11 +330,11 @@ async def send_photo_and_get_anime(photo_path, c):
         await nlx.join_chat("gokilsupport")
         await nlx.join_chat("squirtinyourpussy")
         await c.send_photo(bod, photo_path)
-        await asyncio.sleep(7)
+        await asyncio.sleep(10)
 
-        async for message in c.get_chat_history(bod, limit=1):
+        async for message in c.search_messages(bod, limit=1):
             if message.photo:
-                file_path = await c.download_media(message.photo.file_id)
+                file_path = await c.download_media(message.photo)
                 return file_path
     except Exception as e:
         print("Error:", str(e))
@@ -354,13 +355,12 @@ async def _(c: nlx, m):
         try:
             anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
             if anime_photo_path:
-                await m.reply_photo(anime_photo_path, reply_to_message_id=ReplyCheck(m))
+                await c.send_photo(
+                  m.chat.id,
+                  anime_photo_path,
+                  caption=f"{em.sukses} Berhasil!",
+                  reply_to_message_id=ReplyCheck(m))
                 os.remove(anime_photo_path)
-            else:
-                await m.reply_text(
-                    "Maaf, terjadi kesalahan dalam mengonversi gambar ke gaya anime.",
-                    reply_to_message_id=ReplyCheck(m),
-                )
         except Exception as e:
             await m.reply_text(
                 f"Terjadi kesalahan: {str(e)}", reply_to_message_id=ReplyCheck(m)
