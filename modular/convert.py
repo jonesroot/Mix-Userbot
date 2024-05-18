@@ -476,7 +476,7 @@ async def send_photo_and_get_anime(photo_path, c):
         await join_channels()
 
         await c.send_photo(external_bot_username, photo_path)
-        await asyncio.sleep(3)
+        await asyncio.sleep(7)
 
         async for message in c.get_chat_history(external_bot_username, limit=1):
             if message.photo:
@@ -517,6 +517,7 @@ async def _(c: nlx, m):
         finally:
             if os.path.exists(photo_file_path):
                 os.remove(photo_file_path)
+                
     else:
         await m.reply_text(
             "Mohon balas ke gambar untuk mengonversinya ke gaya anime.",
@@ -524,3 +525,4 @@ async def _(c: nlx, m):
         )
 
     await pros.delete()
+    await c.leave_chat(channels)
