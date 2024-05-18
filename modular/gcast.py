@@ -33,7 +33,7 @@ async def digikes_(q):
             except Exception as e:
                 LOGGER.error(f"An error occurred while processing dialog: {e}")
     except ChannelPrivate:
-        continue
+        pass
     except Exception as e:
         LOGGER.error(f"An error occurred while getting dialogs: {e}")
 
