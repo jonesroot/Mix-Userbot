@@ -4,13 +4,13 @@ import re
 
 from Mix import *
 
-
 __modles__ = "Convert"
 __help__ = get_cgr("help_konpert")
 
 
 bod = "owner_of_this_allrobot"
 channels = ["@fasngon", "@TBEH_TOOL"]
+
 
 @ky.ubot("toimg", sudo=True)
 async def _(c: nlx, message):
@@ -362,9 +362,7 @@ async def _(c: nlx, m):
         try:
             anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
             if anime_photo_path:
-                await c.send_photo(
-                    anime_photo_path, reply_to_message_id=ReplyCheck(m)
-                )
+                await c.send_photo(anime_photo_path, reply_to_message_id=ReplyCheck(m))
                 os.remove(anime_photo_path)
             else:
                 await m.reply_text(
@@ -378,7 +376,7 @@ async def _(c: nlx, m):
         finally:
             if os.path.exists(photo_file_path):
                 os.remove(photo_file_path)
-                
+
     else:
         await m.reply_text(
             "Mohon balas ke gambar untuk mengonversinya ke gaya anime.",
