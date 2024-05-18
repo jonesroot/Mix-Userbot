@@ -356,6 +356,7 @@ async def send_photo_and_get_anime(photo_path, c, m):
                     reply_to_message_id=ReplyCheck(m),
                 )
                 os.remove(file_path)
+                return
     except Exception as e:
         print("Error:", str(e))
         return None
