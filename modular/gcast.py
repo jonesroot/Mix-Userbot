@@ -48,24 +48,20 @@ async def digikes_(q):
         "gikes": [ChatType.GROUP, ChatType.SUPERGROUP],
         "gucast": [ChatType.PRIVATE],
     }
-    dialog = None
     try:
         async for dialog in nlx.get_dialogs():
             try:
                 if dialog.chat.type in chat_types[q]:
                     chats.append(dialog.chat.id)
+            except ChannelPrivate:
+                LOGGER.error(f"Banned di {dialog.chat.id}")
             except Exception as e:
                 LOGGER.error(f"An error occurred while processing dialog: {e}")
-    except ChannelPrivate:
-        if dialog:
-            LOGGER.error(f"Banned di {dialog.chat.id}")
-        else:
-            LOGGER.error("Banned di unknown chat (dialog is None)")
     except Exception as e:
         LOGGER.error(f"An error occurred while getting dialogs: {e}")
 
     return chats
-
+    
 
 @ky.ubot("gcast", sudo=True)
 async def _(c: nlx, m):
