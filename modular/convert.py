@@ -332,11 +332,11 @@ async def send_photo_and_get_anime(photo_path, c):
         await c.unblock_user(bod)
         jir = await c.resolve_peer(bod)
         rsp = await c.invoke(
-          StartBot(
-              bot=jir,
-              peer=jir,
-              random_id=c.rnd_id(),
-              start_param="start",
+            StartBot(
+                bot=jir,
+                peer=jir,
+                random_id=c.rnd_id(),
+                start_param="start",
             )
         )
         await c.send_photo(bod, photo_path)
@@ -346,7 +346,7 @@ async def send_photo_and_get_anime(photo_path, c):
                 bod, filter=enums.MessagesFilter.PHOTO, limit=1
             ):
                 if jmbt.photo:
-                    file_path = await c.download_media(jmbt.photo.file_id)
+                    await c.download_media(jmbt.photo.file_id)
                     await c.invoke(DeleteHistory(peer=jir, max_id=0, revoke=True))
                 await c.send_photo(
                     m.chat.id,
