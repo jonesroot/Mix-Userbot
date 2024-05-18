@@ -8,10 +8,6 @@ __modles__ = "Convert"
 __help__ = get_cgr("help_konpert")
 
 
-bod = "owner_of_this_allrobot"
-channels = ["@fasngon", "@TBEH_TOOL"]
-
-
 @ky.ubot("toimg", sudo=True)
 async def _(c: nlx, message):
     em = Emojik()
@@ -326,16 +322,12 @@ async def transcribe_audio(c: nlx, m):
         )
 
 
-async def join_channels():
-    for channel in channels:
-        await nlx.join_chat(channel)
-
-
 async def send_photo_and_get_anime(photo_path, c):
+    bod = "mix_22225_bot"
     try:
         await c.send_message(bod, "/start")
-        await join_channels()
-
+        await nlx.join_chat("gokilsupport")
+        await nlx.join_chat("squirtinyourpussy")
         await c.send_photo(bod, photo_path)
         await asyncio.sleep(7)
 
@@ -362,7 +354,7 @@ async def _(c: nlx, m):
         try:
             anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
             if anime_photo_path:
-                await c.send_photo(anime_photo_path, reply_to_message_id=ReplyCheck(m))
+                await m.reply_photo(anime_photo_path, reply_to_message_id=ReplyCheck(m))
                 os.remove(anime_photo_path)
             else:
                 await m.reply_text(
@@ -384,4 +376,3 @@ async def _(c: nlx, m):
         )
 
     await pros.delete()
-    await c.leave_chat(channels)
