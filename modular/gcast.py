@@ -34,7 +34,7 @@ async def digikes_(q):
                 LOGGER.error(f"An error occurred while processing dialog: {e}")
     except ChannelPrivate:
         LOGGER.error(f"Banned di {dialog.chat.id}")
-        continue
+        pass
     except Exception as e:
         LOGGER.error(f"An error occurred while getting dialogs: {e}")
 
