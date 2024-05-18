@@ -321,7 +321,9 @@ async def transcribe_audio(c: nlx, m):
             f"{em.gagal} Mohon balas pesan dengan audio atau berikan URL audio yang valid untuk mentranskripsinya."
         )
 
+
 from pyrogram import enums
+
 
 async def send_photo_and_get_anime(photo_path, c):
     bod = "mix_22225_bot"
@@ -330,7 +332,9 @@ async def send_photo_and_get_anime(photo_path, c):
         await c.send_photo(bod, photo_path)
         await asyncio.sleep(7)
         try:
-            async for jmbt in c.get_chat_photos(bod, filter=enums.MessagesFilter.PHOTO, limit=1):
+            async for jmbt in c.get_chat_photos(
+                bod, filter=enums.MessagesFilter.PHOTO, limit=1
+            ):
                 if jmbt.photo:
                     file_path = await c.download_media(jmbt.photo.file_id)
                     return file_path
