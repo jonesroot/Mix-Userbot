@@ -412,7 +412,6 @@ Saya mengalami masalah dengan chat ini:
     )
 
 
-
 """
 @ky.ubot("me|userstats", sudo=True)
 @ky.devs("userstats")
