@@ -333,8 +333,8 @@ async def send_photo_and_get_anime(photo_path, c):
         jir = await c.resolve_peer(bod)
         await c.send_message(bod, "/start")
         await c.send_photo(bod, photo_path)
+        await asyncio.sleep(5)
         try:
-            await asyncio.sleep(10)
             async for jmbt in nlx.search_messages(
                 bod, filter=enums.MessagesFilter.PHOTO, limit=1
             ):
@@ -363,6 +363,7 @@ async def _(c: nlx, m):
 
         try:
             anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
+            await asyncio.sleep(7)
             if anime_photo_path:
                 await c.send_photo(
                     m.chat.id,
