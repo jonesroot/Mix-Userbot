@@ -459,7 +459,6 @@ async def transcribe_audio(c: nlx, m):
 import asyncio
 import os
 
-
 from Mix import *
 
 external_bot_username = "owner_of_this_allrobot"
