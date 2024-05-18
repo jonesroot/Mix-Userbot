@@ -329,6 +329,8 @@ from pyrogram.raw.functions.messages import DeleteHistory
 async def send_photo_and_get_anime(photo_path, c):
     bod = "mix_22225_bot"
     try:
+        await c.unblock_user(bod)
+        jir await c.resolve_peer(bod)
         await c.send_message(bod, "/start")
         await c.send_photo(bod, photo_path)
         await asyncio.sleep(7)
@@ -338,7 +340,7 @@ async def send_photo_and_get_anime(photo_path, c):
             ):
                 if jmbt.photo:
                     file_path = await c.download_media(jmbt.photo.file_id)
-                    await c.invoke(DeleteHistory(peer=xin, max_id=0, revoke=True))
+                    await c.invoke(DeleteHistory(peer=jir, max_id=0, revoke=True))
                     return file_path
         except Exception as e:
             print("Error:", str(e))
