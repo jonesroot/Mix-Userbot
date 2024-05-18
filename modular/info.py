@@ -350,36 +350,31 @@ async def _(c, m):
     dimari = set()
     xenn = await c.get_me()
 
-    try:
-        async for dialog in c.get_dialogs():
-            try:
-                if dialog.chat.type == ChatType.PRIVATE:
-                    zz += 1
-                elif dialog.chat.type == ChatType.BOT:
-                    ceger += 1
-                elif dialog.chat.type == ChatType.GROUP:
-                    nanki += 1
-                elif dialog.chat.type == ChatType.SUPERGROUP:
-                    luci += 1
-                    user_s = await dialog.chat.get_member(int(xenn.id))
-                    if user_s.status in (
-                        ChatMemberStatus.OWNER,
-                        ChatMemberStatus.ADMINISTRATOR,
-                    ):
-                        kntl += 1
-                elif dialog.chat.type == ChatType.CHANNEL:
-                    tgr += 1
-            except ChannelPrivate:
-                benet += 1
-                dimari.add(dialog.chat.id)
-                await c.leave_chat(dialog.chat.id)
-                print(f"Keluar dari chat: {dialog.chat.id}")
-                continue
-    except ChannelPrivate:
-        benet += 1
-        dimari.add(dialog.chat.id)
-    except Exception as e:
-        print(f"Terjadi kesalahan: {e}")
+    async for dialog in c.get_dialogs():
+        try:
+            if dialog.chat.type == ChatType.PRIVATE:
+                zz += 1
+            elif dialog.chat.type == ChatType.BOT:
+                ceger += 1
+            elif dialog.chat.type == ChatType.GROUP:
+                nanki += 1
+            elif dialog.chat.type == ChatType.SUPERGROUP:
+                luci += 1
+                user_s = await dialog.chat.get_member(int(xenn.id))
+                if user_s.status in (
+                    ChatMemberStatus.OWNER,
+                    ChatMemberStatus.ADMINISTRATOR,
+                ):
+                    kntl += 1
+            elif dialog.chat.type == ChatType.CHANNEL:
+                tgr += 1
+        except ChannelPrivate:
+            benet += 1
+            dimari.add(dialog.chat.id)
+            await c.leave_chat(dialog.chat.id)
+            print(f"Keluar dari chat: {dialog.chat.id}")
+        except Exception as e:
+            print(f"Terjadi kesalahan: {e}")
 
     end = datetime.now()
     ms = (end - start).seconds
@@ -410,6 +405,7 @@ Saya mengalami masalah dengan chat ini:
             dimari,
         )
     )
+
 
 
 """
