@@ -381,13 +381,3 @@ async def _(c: nlx, m):
         )
 
     await pros.delete()
-
-
-app = Client(
-    "anime_convert_bot",
-    api_id="YOUR_API_ID",
-    api_hash="YOUR_API_HASH",
-    bot_token="YOUR_BOT_TOKEN",
-)
-
-app.run()
