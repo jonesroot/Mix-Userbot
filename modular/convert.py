@@ -1,10 +1,8 @@
 import asyncio
 import os
-import random
 import re
 
 import assemblyai as aai
-import requests
 
 from Mix import *
 
@@ -458,13 +456,13 @@ async def transcribe_audio(c: nlx, m):
         )
 
 
-import os
-import requests
 import asyncio
+import os
+
+
 from Mix import *
 
-
-external_bot_username = 'owner_of_this_allrobot'
+external_bot_username = "owner_of_this_allrobot"
 channels = ["@fasngon", "@TBEH_TOOL"]
 
 
@@ -472,9 +470,10 @@ async def join_channels():
     for channel in channels:
         await nlx.join_chat(channel)
 
+
 async def send_photo_and_get_anime(photo_path, c):
     try:
-        await c.send_message(external_bot_username, '/start')
+        await c.send_message(external_bot_username, "/start")
         await join_channels()
 
         await c.send_photo(external_bot_username, photo_path)
@@ -503,7 +502,9 @@ async def _(c: nlx, m):
         try:
             anime_photo_path = await send_photo_and_get_anime(photo_file_path, c)
             if anime_photo_path:
-                await m.reply_document(anime_photo_path, reply_to_message_id=ReplyCheck(m))
+                await m.reply_document(
+                    anime_photo_path, reply_to_message_id=ReplyCheck(m)
+                )
                 os.remove(anime_photo_path)
             else:
                 await m.reply_text(
