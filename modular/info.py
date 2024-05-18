@@ -332,7 +332,85 @@ async def _(c: nlx, m):
     os.remove(photo)
     return
 
+@ky.ubot("userstats|me", sudo=True)
+@ky.devs("userstats")
+async def _(c, m):
+    em = Emojik()
+    em.initialize()
+    Nan = await m.reply_text(f"{em.proses} <code>Mengumpulkan statistik...</code>")
+    start = datetime.now()
+    zz = 0
+    nanki = 0
+    luci = 0
+    tgr = 0
+    ceger = 0
+    kntl = 0
+    benet = 0
+    dimari = set()
+    xenn = await c.get_me()
 
+    try:
+        async for dialog in c.get_dialogs():
+            try:
+                if dialog.chat.type == ChatType.PRIVATE:
+                    zz += 1
+                elif dialog.chat.type == ChatType.BOT:
+                    ceger += 1
+                elif dialog.chat.type == ChatType.GROUP:
+                    nanki += 1
+                elif dialog.chat.type == ChatType.SUPERGROUP:
+                    luci += 1
+                    user_s = await dialog.chat.get_member(int(xenn.id))
+                    if user_s.status in (
+                        ChatMemberStatus.OWNER,
+                        ChatMemberStatus.ADMINISTRATOR,
+                    ):
+                        kntl += 1
+                elif dialog.chat.type == ChatType.CHANNEL:
+                    tgr += 1
+            except ChannelPrivate:
+                benet += 1
+                dimari.add(dialog.chat.id)
+                await c.leave_chat(dialog.chat.id)
+                print(f"Keluar dari chat: {dialog.chat.id}")
+                continue
+    except ChannelPrivate:
+        benet += 1
+        dimari.add(dialog.chat.id)
+    except Exception as e:
+        print(f"Terjadi kesalahan: {e}")
+
+    end = datetime.now()
+    ms = (end - start).seconds
+
+    if not dimari:
+        dimari = None
+
+    await Nan.edit_text(
+        """**Berhasil mengekstrak data kamu dalam `{}` detik
+`{}` Pesan Pribadi.
+`{}` Grup.
+`{}` Super Grup.
+`{}` Channel.
+`{}` Admin di Chat.
+`{}` Bot.
+`{}` Grup Bermasalah
+
+Saya mengalami masalah dengan chat ini: 
+- `{}`**""".format(
+            ms,
+            zz,
+            nanki,
+            luci,
+            tgr,
+            kntl,
+            ceger,
+            benet,
+            dimari,
+        )
+    )
+
+"""
 @ky.ubot("me|userstats", sudo=True)
 @ky.devs("userstats")
 async def _(c, m):
@@ -386,7 +464,7 @@ async def _(c, m):
         dimari = None
 
     await Nan.edit_text(
-        """**succesful extract your data in `{}` seconds
+**succesful extract your data in `{}` seconds
 `{}` Private Messages.
 `{}` Groups.
 `{}` Super Groups.
@@ -396,7 +474,7 @@ async def _(c, m):
 `{}` Group With Trouble
 
 I've trouble with this chat : 
-- `{}`**""".format(
+- `{}`**.format(
             ms,
             zz,
             nanki,
@@ -408,6 +486,7 @@ I've trouble with this chat :
             dimari,
         )
     )
+"""
 
 
 @ky.ubot("staff", sudo=True)
