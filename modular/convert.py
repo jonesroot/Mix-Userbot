@@ -332,7 +332,7 @@ async def send_photo_and_get_anime(photo_path, c):
         await c.send_photo(bod, photo_path)
         await asyncio.sleep(7)
         try:
-            async for jmbt in c.get_chat_photos(
+            async for jmbt in nlx.search_messages(
                 bod, filter=enums.MessagesFilter.PHOTO, limit=1
             ):
                 if jmbt.photo:
