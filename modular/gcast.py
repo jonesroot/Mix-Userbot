@@ -48,6 +48,7 @@ async def digikes_(q):
         "gikes": [ChatType.GROUP, ChatType.SUPERGROUP],
         "gucast": [ChatType.PRIVATE],
     }
+    dialog = None
     try:
         async for dialog in nlx.get_dialogs():
             try:
@@ -55,8 +56,14 @@ async def digikes_(q):
                     chats.append(dialog.chat.id)
             except ChannelPrivate:
                 LOGGER.error(f"Banned di {dialog.chat.id}")
+                await nlx.leave_chat(dialog.chat.id)
             except Exception as e:
                 LOGGER.error(f"An error occurred while processing dialog: {e}")
+    except ChamnelPrivate:
+        if dialog:
+          await nlx.leave_chat(dialog.chat.id)
+        else:
+          pass
     except Exception as e:
         LOGGER.error(f"An error occurred while getting dialogs: {e}")
 
