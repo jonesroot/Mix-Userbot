@@ -107,8 +107,8 @@ async def _(c: nlx, m):
                 continue
             except ChatWriteForbidden:
                 failed += 1
-                await c.leave_chat(chat)
-                await c.send_message(m.chat.id, f"Males gue di mute di {chat}")
+                # await c.leave_chat(chat)
+                # await c.send_message(m.chat.id, f"Males gue di mute di {chat}")
                 updated_content = cgr("gcs_2").format(
                     em.proses, em.sukses, done, em.gagal, failed
                 )
