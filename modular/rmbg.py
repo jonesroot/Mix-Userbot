@@ -59,7 +59,7 @@ async def _(c: Client, m):
 
     if rep and rep.photo:
         photo = rep.photo
-        photo_file_path = await c.download_media(photo.file_id)
+        photo_file_path = await c.download_media(photo)
 
         try:
             hasil = await rem_bg(photo_file_path)
