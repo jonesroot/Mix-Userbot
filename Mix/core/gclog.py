@@ -66,7 +66,7 @@ async def getFinish():
     xx = " ".join(emut)
     try:
         await bot.send_message(
-            int(TAG_LOG),
+            TAG_LOG,
             f"""
 <b>Userbot Successfully Deploy !!</b>
 
@@ -94,7 +94,7 @@ async def getFinish():
                 ),
             )
             await bot.send_message(
-                int(TAG_LOG),
+                TAG_LOG,
                 f"""
 <b>Userbot Successfully Deploy !!</b>
 
