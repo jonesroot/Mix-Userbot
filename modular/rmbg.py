@@ -52,8 +52,8 @@ async def _(c: nlx, m):
     pros = await m.reply(cgr("proses").format(em.proses))
 
     if rep:
-        photo = rep.photo.file_id
-        photo_file_path = await c.download_media(photo)
+        photo = rep.photo
+        photo_file_path = await c.download_media(photo.file_id)
 
         try:
             hasil = await rem_bg(photo_file_path)
