@@ -66,7 +66,7 @@ async def getFinish():
     xx = " ".join(emut)
     try:
         await bot.send_message(
-            TAG_LOG,
+            int(TAG_LOG),
             f"""
 <b>Userbot Successfully Deploy !!</b>
 
@@ -93,15 +93,9 @@ async def getFinish():
                     can_manage_video_chats=True,
                 ),
             )
-        except:
-            ndB.del_key("TAG_LOG")
-            execvp(executable, [executable, "-m", "Mix"])
-
-
-"""
-await bot.send_message(
+            await bot.send_message(
                 TAG_LOG,
-                f
+                f"""
 <b>Userbot Successfully Deploy !!</b>
 
 <b>Modules : {len(CMD_HELP)}</b>
@@ -109,6 +103,8 @@ await bot.send_message(
 <b>Pyrogram : {pyrover}</b>
 <b>Pytgcalls : {pytgver}</b>
 <b>Prefixes : {xx}</b>
-,
+""",
             )
-"""
+        except:
+            ndB.del_key("TAG_LOG")
+            execvp(executable, [executable, "-m", "Mix"])
