@@ -26,7 +26,7 @@ async def rem_bg(image_path):
     try:
         rmbg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
         rmbg.remove_background_from_img_file(image_path)
-        hasil = "*no-bg.png"
+        hasil = "no-bg.png"
         return hasil
     except Exception as e:
         print("Error:", str(e))
@@ -37,7 +37,7 @@ async def rbg_link(link):
     try:
         rmbg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
         rmbg.remove_background_from_img_url(link)
-        hasil = "*no-bg.png"
+        hasil = "no-bg.png"
         return hasil
     except Exception as e:
         print("Error:", str(e))
@@ -52,7 +52,7 @@ async def _(c: nlx, m):
     pros = await m.reply(cgr("proses").format(em.proses))
 
     if rep:
-        photo = rep.photo
+        photo = rep.photo.file_id
         photo_file_path = await c.download_media(photo)
 
         try:
