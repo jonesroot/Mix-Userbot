@@ -94,7 +94,7 @@ async def getFinish():
                 ),
             )
             await bot.send_message(
-                TAG_LOG,
+                int(TAG_LOG),
                 f"""
 <b>Userbot Successfully Deploy !!</b>
 
