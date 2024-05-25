@@ -35,6 +35,7 @@ async def rem_bg(image_path):
         print("Error:", str(e))
         return None
 
+
 async def rbg_link(link):
     try:
         rmbg = RemoveBg("KxZHg1ZjxsiU5TLca4kjWptR", "error.log")
@@ -48,6 +49,7 @@ async def rbg_link(link):
         print("Error:", str(e))
         return None
 
+
 @ky.ubot("rmbg|rbg", sudo=True)
 async def _(c: Client, m):
     em = Emojik()
@@ -58,7 +60,7 @@ async def _(c: Client, m):
     if rep and rep.photo:
         photo = rep.photo
         photo_file_path = await c.download_media(photo.file_id)
-        
+
         try:
             hasil = await rem_bg(photo_file_path)
             if hasil:
