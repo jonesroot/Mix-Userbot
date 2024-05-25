@@ -58,7 +58,7 @@ async def starter():
 
 async def main():
     await starter()
-    await asyncio.gather(check_logger(), refresh_cache(), getFinish())
+    await asyncio.gather(refresh_cache(), getFinish())
     LOGGER.info("Successfully Started Userbot.")
     task_afk = asyncio.create_task(auto_clean())
     task_gc = asyncio.create_task(autor_gc())
