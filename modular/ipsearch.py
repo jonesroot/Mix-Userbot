@@ -35,20 +35,20 @@ def format_ip_info(ip_info):
     em.initialize()
     latitude, longitude = ip_info.get("loc", "0,0").split(",")
     google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
-    formatted_info = ""
-    formatted_info += f"• IP Address : `{ip_info.get('ip', 'None')}`\n"
-    formatted_info += f"• Hostname : `{ip_info.get('hostname', 'Unknown')}`\n"
-    formatted_info += f"• City : `{ip_info.get('city', 'Unknown')}`\n"
-    formatted_info += f"• Region : `{ip_info.get('region', 'Unknown')}`\n"
-    formatted_info += f"• Country : `{ip_info.get('country_name', 'Unknown')}`\n"
-    formatted_info += f"• Location : [Location]({google_maps_link})\n"
-    formatted_info += f"• Postal Code : `{ip_info.get('postal', 'Unknown')}`\n"
-    formatted_info += f"• Timezone : `{ip_info.get('timezone', 'Unknown')}`\n"
+    formatted_info = cgr("ipin_1").format(em.sukses, ip_info)
+    formatted_info += cgr("ipin_2").format(ip_info.get('ip', 'None'))
+    formatted_info += cgr("ipin_3").format(ip_info.get('hostname', 'Unknown'))
+    formatted_info += cgr("ipin_4").format(ip_info.get('city', 'Unknown'))
+    formatted_info += cgr("ipin_5").format(ip_info.get('region', 'Unknown'))
+    formatted_info += cgr("ipin_6").format(ip_info.get('country_name', 'Unknown'))
+    formatted_info += cgr("ipin_7").format(Location, google_maps_link)
+    formatted_info += cgr("ipin_8").format(ip_info.get('postal', 'Unknown'))
+    formatted_info += cgr("ipin_9").format(ip_info.get('timezone', 'Unknown'))
     formatted_info += (
-        f"• Flag : `{ip_info.get('country_flag', {}).get('emoji', 'Unknown')}`\n"
+        cgr("ipin_10").format(ip_info.get('country_flag', {}).get('emoji', 'Unknown'))
     )
     formatted_info += (
-        f"• Currency : `{ip_info.get('country_currency', {}).get('code', 'Unknown')}`"
+        cgr("ipin_11").format(ip_info.get('country_currency', {}).get('code', 'Unknown'))
     )
 
     return formatted_info
@@ -68,13 +68,13 @@ async def _(c: nlx, m):
             google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
             keyboard = InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("Tautan Lokasi", url=google_maps_link)],
-                    [InlineKeyboardButton("Tutup", callback_data="close_ip")],
+                    [InlineKeyboardButton(cgr("ipin_12")), url=google_maps_link)],
+                    [InlineKeyboardButton(cgr("ipin_13")), callback_data="close_ip")],
                 ]
             )
 
             await m.reply(
-                f"{em.sukses} Sukses mendapatkan informasi dari IP `{ip}`:\n\n{formatted_info}",
+                cgr("ipin_14").format(em.sukses, ip, formatted_info)),
                 reply_markup=keyboard,
                 reply_to_message_id=ReplyCheck(m),
                 disable_web_page_preview=True,
