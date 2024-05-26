@@ -62,10 +62,6 @@ fil_14: "{} Filter `{}` deleted!"
 fil_15: "{} All Filters successfully deleted."
 fil_16: "{} Unable to find this Filter."
 
-# image
-help_img: " **Image**\n\n• Command: `{0}`img [query]\n• Description: To search for images."
-help_ips: " **IpSearch**\n\n• Command: `{0}`ipf [country]\n• Description: To search for fake addresses.\n\n• Command: `{0}`ips [ip]\n• Description: To search for an address\n\n• Not 100% accurate."
-
 # mention
 ment_1: "{} <b>You're not an ADMIN on this Group!</b>"
 ment_2: "{} <b>Please give me someme text.</b>"
@@ -555,7 +551,25 @@ gitup: "{} **Enter github username!!**"
 gitup_1: "{} **Github Profile [{}]({}) :**\n\n**Name**: [{}]({})\n**Type**: {}\n**Company**: `{}`\n**Blog**: `{}`\n**Location**: `{}`\n**Biography**: `{}`\n**Profile Created**: `{}`\n"
 gitup_2: "`{}` **404 : User Not Found!!**"
 
+#ip info
+ipin_1: "{} **The following is information from `{}`:"
+ipin_2: "• IP Address : `{}`\n"
+ipin_3: "• Hostname : `{}`\n"
+ipin_4: "• City : `{}`\n"
+ipin_5: "• Region : `{}`\n"
+ipin_6: "• Country : `{}`\n"
+ipin_7: "• Location : [{}]({})\n"
+ipin_8: "• Postal Code : `{}`\n"
+ipin_9: "• Timezone : `{}`\n"
+ipin_10: "• Flag : `{}`\n"
+ipin_11: "• Currency : `{}`"
+ipin_12: "Location Link"
+ipin_13: "Close"
+ipin_14: "{} **Successful getting information from IP `{}` :**\n\n{}"
+
 # help_for
+help_img: " **Image**\n\n• Command: `{0}img` [query]\n• Description: To search for images.\n"
+help_ips: " **IpSearch**\n\n• Command: `{0}ipinfo` [ip]\n• Description: To find an information of an IP Address\n\n• Not 100% accurate.\n"
 help_gitup: " **Github**\n\n• Command: `{0}github` [username]\n• Description: To view someone's github account profile.\n"
 help_afk: " **Afk**\n\n• Command: `{0}afk` [reason]\n• Description: To activate afk mode.\n\n• Command: `{0}unafk` [reason]\n• Description: To deactivate afk mode."
 help_alive: " **Alive**\n\n• Command: `{0}alive`\n• Description: Alive."
@@ -567,7 +581,7 @@ help_dev: " **Developer**\n\n• Command: `{0}sh`\n• Description: Execute code
 help_gcast: " **Broadcast**\n\n• Command: `{0}gucast` [reply to message/send message]\n• Description: To broadcast messages to all users.\n\n• Command: `{0}gcast` [reply to message/send message]\n• Description: To broadcast messages to all groups.\n\n• Command: `{0}addbl`\n• Description: Add a group to the anti-Gcast list.\n\n• Command: `{0}delbl`\n• Description: Remove a group from the anti-Gcast list.\n\n• Command: `{0}rmall`\n• Description: Remove all groups from the anti-Gcast list.\n\n• Command: `{0}listbl`\n• Description: View the list of anti-Gcast groups.\n\n• Command: `{0}send` [username/user_id - text/reply]\n• Description: To send a message to a user/group/channel."
 help_global: " **Global**\n\n• Command: `{0}gban` [user_id/username/reply to message]\n• Description: To perform a global ban.\n\n• Command: `{0}ungban` [user_id/username/reply to message]\n• Description: To perform a global unban.\n\n• Command: `{0}listgban` [user_id/username/reply to message]\n• Description: To view the list of gban users.\n\n• Command: `{0}gmute` [user_id/username/reply to message]\n• Description: To perform a global mute.\n\n• Command: `{0}ungmute` [user_id/username/reply to message]\n• Description: To perform a global unmute.\n\n• Command: `{0}listgmute` [user_id/username/reply to message]\n• Description: To view the list of gmute users."
 help_graph: " **Telegraph**\n\n• Command: `{0}tg`\n• Description: To upload text, video, or photo."
-help_gruplog: " **GroupLog**\n\n• Command: `{0}gruplog` [on/off]\n• Description: Activate tag log and pm log."
+help_gruplog: " **GrupLog**\n\n• Command: `{0}gruplog` [on/off]\n• Description: Enable or Disable tag log and pm log.\n\n• Command: `{0}setdb taglog` [on/off]\n• Description: To enable/disable tag logger\n\n• Command: `{0}setdb pmlog` [on/off]\n• Description: To enable/disable PM logger.\n"
 help_heroku: " **Heroku**\n\n• Command: `{0}getlog`\n• Description: View Heroku logs.\n\n• Command: `{0}getvar`\n• Description: View variables on Heroku.\n\n• Command: `{0}delvar`\n• Description: Delete variables on Heroku.\n\n• Command: `{0}setvar`\n• Description: Set variables and values on Heroku."
 help_info: " **Info**\n\n• Command: `{0}`staff\n• Description: For getting List Admins on groups.\n\n• Command: `{0}info`\n• Description: To view user info.\n\n• Command: `{0}cinfo`\n• Description: To view group info."
 help_webss: " **Webshot**\n\n• Command: `{0}webss or ss`\n• Description: To take a screenshot of a link."
@@ -621,7 +635,6 @@ help_repo: " **Repository**\n\n• Command: `{0}`repo\n• Description: To look 
 help_nul: " **Write**\n\n• Command: `{0}`write\n• Description: For lazy writing."
 help_lirk: " **Lyric**\n\n• Command: `{0}`lyrics\n• Description: To search for song lyrics."
 help_auend: " **AutoEnd**\n\n• Command: `{0}`endchat [username/user ID/reply to user]\n• Description: To delete chat history\n\n• Optional: \n• `username/reply to user` - Delete chat history of user\n• `bot` - Delete all bot chat history\n• `all` - Delete chat history of all your private messages."
-help_img: " **Image**\n\n• Command: `{0}`img [query]\n• Description: Searching image.\n"
 help_tod: " **Truth Or Dare**\n\n• Command: `{0}truth`\n• Description: To provide random questions that must be answered truthfully!\n\n• Command: `{0}dare`\n• Description: To provide a random challenge that must be done!\n"
 help_prox: " **Proxy**\n\n• Command: `{0}getproxy` [`http`|`socks4`|`socks5`]\n• Description: For get Top 2 as random but best.\n"
 help_waif: "**Waifu**\n\n• Command: {0}waifu [tags] [quantity (Optional, Default = 3)]\n• Description: Fetches waifu/anime images based on specified tags.\n\n• Command: {0}loly [category]\n• Description: Retrieves waifu/anime images based on the specified category.\n\n• Command: {0}neko [query]\n• Description: Obtains adult anime images based on the provided query.\n"
