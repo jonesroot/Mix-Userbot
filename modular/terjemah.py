@@ -57,16 +57,27 @@ async def _(c: nlx, m):
     em.initialize()
     trans = Translator()
     rep = m.reply_to_message
-    txt = m.reply_to_message.text if rep else m.text.split(None, 1)[1]
-    if not text:
-        await pros.edit(cgr("tr_1").format(em.gagal, m.text))
-    src = await trans.detect(txt)
     pros = await m.reply(cgr("proses").format(em.proses))
-    trsl = await trans(txt, sourcelang=src, targetlang=bhs)
-    reply = cgr("tr_2").format(em.sukses, trsl.text)
-    rep = m.reply_to_message or m
-    await pros.delete()
-    await c.send_message(m.chat.id, reply, reply_to_message_id=rep.id)
+    if rep and (rep.text or rep.caption):
+        txt = rep.text or rep.caption
+    elif len(m.text.split(None, 1)) > 1:
+        txt = m.text.split(None, 1)[1]
+    else:
+        txt = None
+
+    if not txt:
+        await pros.edit(cgr("tr_1").format(em.gagal, "Mohon balas pesan dengan teks atau masukkan teks setelah perintah /tr."))
+        return
+
+    try:
+        src = await trans.detect(txt)
+        bhs = c._translate[c.me.id]["negara"]
+        trsl = await trans(txt, sourcelang=src, targetlang=bhs)
+        reply = cgr("tr_2").format(em.sukses, trsl.text)
+        await pros.delete()
+        await c.send_message(m.chat.id, reply, reply_to_message_id=(rep.id if rep else m.id))
+    except Exception as e:
+        await pros.edit(cgr("err").format(em.gagal, str(e)))
 
 
 @ky.ubot("lang", sudo=True)
