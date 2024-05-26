@@ -567,7 +567,12 @@ ipin_12: "Tautan Lokasi"
 ipin_13: "Tutup"
 ipin_14: "{} **Sukses mendapatkan informasi dari IP `{}` :**\n\n{}"
 
+# jokes
+joko_1: "**Pertanyaan Jokes:**\n{}\n\n**Jawaban Jokes:**\n{}"
+joko_2: "{} **Gagal mendapatkan joke.**"
+
 # help_for
+help_joko: " **Joke**\n\n• Perintah: `{0}joke` atau `{0}jokes`\n• Penjelasan: Untuk memberikan jokes secara random.\n"
 help_img: " **Image**\n\n• Perintah: `{0}img` [query]\n• Penjelasan: Untuk mencari gambar.\n"
 help_ips: " **IpSearch**\n\n• Perintah: `{0}ipinfo` [ip]\n• Penjelasan: Untuk mencari tau informasi dari sebuah alamat IP.\n\n• Tidak 100% Akurat.\n"
 help_gitup: " **Github**\n\n• Perintah: `{0}github` [username]\n• Penjelasan: Untuk melihat profil akun github seseorang.\n"
