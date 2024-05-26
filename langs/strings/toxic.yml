@@ -552,7 +552,7 @@ jan_11: "Isya : `{}`\n"
 
 # github
 gitup: "{} **Masukkan username github!!**"
-gitup_1: "{} **Nama**: [{}]({})\n**Jenis**: {}\n**Perusahaan**: {}\n**Blog**: {}\n**Lokasi**: {}\n**Biografi**: {}\n**Profil Dibuat**: {}"
+gitup_1: "{} **Nama**: [{}]({})\n**Jenis**: `{}`\n**Perusahaan**: `{}`\n**Blog**: `{}`\n**Lokasi**: `{}`\n**Biografi**: `{}`\n**Profil Dibuat**: `{}`\n"
 gitup_2: "{} **404 : Pengguna Tidak Ditemukan!!**"
 
 # help_for
