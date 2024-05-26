@@ -28,8 +28,11 @@ from config import *
 from Mix import bot, nlx
 
 
+chat_id = int(log_channel) if log_channel else ndB.get_key("TAG_LOG")
+
 async def check_logger():
-    if not ndB.get_key("TAG_LOG") and log_channel is None:
+    # if not ndB.get_key("TAG_LOG") and log_channel is None:
+      if not chat_id:
         LOGGER.info(f"Creating Grup Log...")
         nama = f"Mix-Userbot Logs"
         des = "Jangan Keluar Dari Grup Log Ini\n\nPowered by: @KynanSupport"
@@ -66,7 +69,7 @@ async def getFinish():
     xx = " ".join(emut)
     try:
         await bot.send_message(
-            int(TAG_LOG),
+            int(chat_id),
             f"""
 <b>Userbot Successfully Deploy !!</b>
 
@@ -80,7 +83,7 @@ async def getFinish():
     except (ChannelInvalid, PeerIdInvalid):
         try:
             await nlx.promote_chat_member(
-                int(TAG_LOG),
+                int(chat_id),
                 bot.me.username,
                 privileges=ChatPrivileges(
                     can_change_info=True,
@@ -94,7 +97,7 @@ async def getFinish():
                 ),
             )
             await bot.send_message(
-                int(TAG_LOG),
+                int(chat_id),
                 f"""
 <b>Userbot Successfully Deploy !!</b>
 
@@ -107,8 +110,4 @@ async def getFinish():
             )
         except:
             ndB.del_key("TAG_LOG")
-            try:
-                ndB.set_key("TAG_LOG", log_channel)
-            except:
-                pass
             execvp(executable, [executable, "-m", "Mix"])
