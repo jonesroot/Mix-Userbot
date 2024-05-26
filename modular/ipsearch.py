@@ -72,7 +72,6 @@ async def _(c: nlx, m):
                     [InlineKeyboardButton(cgr("ipin_13"), callback_data="close_ip")],
                 ],
             )
-
             await m.reply(
                 cgr("ipin_14").format(em.sukses, ip, formatted_info)),
                 reply_markup=keyboard,
