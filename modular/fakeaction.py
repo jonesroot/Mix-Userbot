@@ -7,7 +7,7 @@ from pyrogram.types import *
 from Mix import *
 
 __modles__ = "Fake Action"
-__help__ = "Fake Action"
+__help__ = get_cgr("help_pek")
 
 
 @ky.ubot("giben|gben", sudo=True)
