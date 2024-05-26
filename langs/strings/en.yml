@@ -552,7 +552,7 @@ gitup_1: "{} **Github Profile [{}]({}) :**\n\n**Name**: [{}]({})\n**Type**: {}\n
 gitup_2: "`{}` **404 : User Not Found!!**"
 
 #ip info
-ipin_1: "{} **The following is information from `{}`:"
+ipin_1: "{} **The following is information from `{}`:\n\n"
 ipin_2: "• IP Address : `{}`\n"
 ipin_3: "• Hostname : `{}`\n"
 ipin_4: "• City : `{}`\n"
