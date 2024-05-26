@@ -15,13 +15,11 @@ async def _(c: nlx, m):
     lok = c.get_text(m)
     pros = await m.reply(cgr("proses").format(em.proses))
     if not lok:
-        await pros.edit(cgr("jan_1").format(em.gagal))
-        return
+        return await pros.edit(cgr("jan_1").format(em.gagal))
     url = f"http://muslimsalat.com/{lok}.json?key=bd099c5825cbedb9aa934e255a81a5fc"
     req = requests.get(url)
     if req.status_code != 200:
-        await pros.edit(cgr("jan_2").format(em.gagal, lok)
-        return
+        return await pros.edit(cgr("jan_2").format(em.gagal, lok)
     result = json.loads(req.text)
     txt = cgr("jan_3").format(lok)
     txt += cgr("jan_4").format(result['items'][0]['date_for']),
