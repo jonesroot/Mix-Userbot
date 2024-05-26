@@ -67,11 +67,7 @@ async def _(c: nlx, m):
 
     if not txt:
         await pros.edit(
-            cgr("tr_1").format(
-                em.gagal,
-                "Mohon balas pesan dengan teks atau masukkan teks setelah perintah /tr.",
-            )
-        )
+            cgr("tr_1").format(em.gagal, m.text))
         return
 
     try:
