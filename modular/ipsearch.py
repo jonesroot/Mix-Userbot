@@ -9,6 +9,7 @@
 ################################################################
 
 
+from asyncio import sleep
 import requests
 from pyrogram import *
 from pyrogram.types import *
@@ -72,6 +73,7 @@ async def _(c: nlx, m):
                     [InlineKeyboardButton(cgr("ipin_13"), callback_data="close_ip")],
                 ],
             )
+            await sleep(2)
             await m.reply(
                 cgr("ipin_14").format(em.sukses, ip, formatted_info),
                 reply_markup=keyboard,
@@ -81,7 +83,7 @@ async def _(c: nlx, m):
             await pros.delete()
         else:
             await pros.edit(
-                cgr("err").format(em.gagal, "Mohon masukkan IP yang valid.")
+                cgr("err").format(em.gagal)
             )
     except Exception as e:
         await pros.edit(cgr("err").format(em.gagal, str(e)))
