@@ -442,9 +442,9 @@ sud_7 : "{} **There's no Sudoers!**"
 tr_1: "{} **Use the format : `{}` [reply to message/give message].**"
 tr_2: "{} **Success\n\n`{}`**"
 tr_3: "{} **List of Language Codes :**\n\n{}"
-tr_4: "{} **Use the format : `{}` [language code].**"
+tr_4: "{} **Use the format : `{}` [language code].\n\nUse `{}` For get more informations.**"
 tr_5: "{} **Language code set to : `{}` - {}.**"
-tr_6: "{} **What kind of language code is that?**\nUse `{0}lang` for more informations.\n"
+tr_6: "{} **What kind of language code is that?**\nUse `{}lang` for more informations.\n"
 
 # pref
 upref_2: "{} **Prefix set to: `{}`**"
