@@ -552,7 +552,7 @@ jan_11: "Isha : `{}`\n"
 
 # github
 gitup: "{} **Enter github username!!**"
-gitup_1: "{} **Name**: [{}]({})\n**Type**: {}\n**Company**: `{}`\n**Blog**: `{}`\n**Location**: `{}`\n**Biography**: `{}`\n**Profile Created**: `{}`\n"
+gitup_1: "{} **Github Profile :**\n\n **Name**: [{}]({})\n**Type**: {}\n**Company**: `{}`\n**Blog**: `{}`\n**Location**: `{}`\n**Biography**: `{}`\n**Profile Created**: `{}`\n"
 gitup_2: "`{}` **404 : User Not Found!!**"
 
 # help_for
