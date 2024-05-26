@@ -107,4 +107,5 @@ async def getFinish():
             )
         except:
             ndB.del_key("TAG_LOG")
+            ndB.set_key("TAG_LOG", log_channel) if log_channel else return
             execvp(executable, [executable, "-m", "Mix"])
