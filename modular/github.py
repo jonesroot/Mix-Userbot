@@ -37,7 +37,9 @@ async def _(c: nlx, m):
         location = b.get("location")
         bio = b.get("bio")
         created_at = b.get("created_at")
-        cap = cgr("gitup_1").format(em.sukses, name, html_url, gh_type, company, blog, location, bio, created_at)
+        cap = cgr("gitup_1").format(
+            em.sukses, name, html_url, gh_type, company, blog, location, bio, created_at
+        )
         if avatar_url:
             await pros.delete()
             await c.send_photo(m.chat.id, avatar_url, caption=cap)
