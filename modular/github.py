@@ -38,7 +38,7 @@ async def _(c: nlx, m):
         bio = b.get("bio", None)
         created_at = b.get("created_at", None)
         cap = cgr("gitup_1").format(
-            em.sukses, name, html_url, gh_type, company, blog, location, bio, created_at
+            em.sukses, txt, html_url, name, html_url, gh_type, company, blog, location, bio, created_at
         )
         if avatar_url:
             await pros.delete()
