@@ -41,6 +41,7 @@ async def check_logger():
         gmbr = {"video": bhan} if bhan.endswith(".mp4") else {"photo": bhan}
         kntl = gc.id
         await nlx.set_chat_photo(kntl, **gmbr)
+        await nlx.add_chat_members(kntl, bot.me.username)
         await nlx.promote_chat_member(
             kntl,
             bot.me.username,
@@ -55,7 +56,7 @@ async def check_logger():
                 can_manage_video_chats=True,
             ),
         )
-        ndB.set_key("TAG_LOG", kntl)
+        ndB.set_key("TAG_LOG", int(kntl))
         await nlx.send_message(kntl, f"<b>Group Log Berhasil Dibuat.</b>")
         LOGGER.info(f"Group Logger Enable...")
         execvp(executable, [executable, "-m", "Mix"])
