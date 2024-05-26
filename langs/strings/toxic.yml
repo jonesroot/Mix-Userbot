@@ -463,7 +463,7 @@ sud_7 : "{} **Ahh sial, kaga punya piaraan!!**"
 tr_1: "{} **Goblok!! Pake format : `{}` [balas pesan/berikan pesan].**"
 tr_2: "{} **Sukses\n\n`{}`**"
 tr_3: "{} **Daftar kode Bahasa :**\n\n{}"
-tr_4: "{} **Goblok!! Pake format : `{}` [kode bahasa].\nKetik `{}lang` jink!!**"
+tr_4: "{} **Goblok!! Pake format : `{}` [kode bahasa].\n**"
 tr_5: "{} **Kode Bahasa diatur menjadi : `{}` - {}.**"
 tr_6: "{} **Kode bahasa macam apa itu?**\nGunakan perintah `{}lang` untuk menampilkan daftar bahasa yang tersedia.\n"
 
