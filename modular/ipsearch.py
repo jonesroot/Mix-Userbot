@@ -10,6 +10,7 @@
 
 
 from asyncio import sleep
+
 import requests
 from pyrogram import *
 from pyrogram.types import *
@@ -82,9 +83,7 @@ async def _(c: nlx, m):
             )
             await pros.delete()
         else:
-            await pros.edit(
-                cgr("err").format(em.gagal)
-            )
+            await pros.edit(cgr("err").format(em.gagal))
     except Exception as e:
         await pros.edit(cgr("err").format(em.gagal, str(e)))
 
