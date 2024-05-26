@@ -1,8 +1,5 @@
 import requests
-import gtts
 from gpytranslate import Translator
-from Mix.core.parser import kode_bahasa
-
 
 from Mix import *
 
@@ -44,7 +41,9 @@ async def _(c: nlx, m):
         question += "?"
         translated_question = await kitatr(c, question)
         translated_answer = await kitatr(c, answer.strip())
-        response = cgr("joko_1").format(em.sukses, translated_question, translated_answer)
+        response = cgr("joko_1").format(
+            em.sukses, translated_question, translated_answer
+        )
         await pros.edit(response)
     else:
         await pros.edit(cgr("joko_2").format(em.gagal))
