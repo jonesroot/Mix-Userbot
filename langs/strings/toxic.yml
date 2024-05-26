@@ -550,7 +550,13 @@ jan_9: "Ashar : `{}`\n"
 jan_10: "Maghrib : `{}`\n"
 jan_11: "Isya : `{}`\n"
 
+# github
+gitup: "{} **Masukkan username github!!**"
+gitup_1: "{} **Nama**: [{}]({})\n**Jenis**: {}\n**Perusahaan**: {}\n**Blog**: {}\n**Lokasi**: {}\n**Biografi**: {}\n**Profil Dibuat**: {}"
+gitup_2: "{} **404 : Pengguna Tidak Ditemukan!!**"
+
 # help_for
+help_gitup: " **Github**\n\n• Perintah: `{0}github` [username]\n• Penjelasan: Untuk melihat profil akun github seseorang.\n"
 help_afk: " **Afk**\n\n• Perintah : `{0}afk` [alesan]\n• Penjelasan : Buat mengaktifkan mode afk.\n\n• Perintah : `{0}unafk`\n• Penjelasan : Buat menonaktifkan mode afk."
 help_alive: " **Alive**\n\n• Perintah : `{0}alive`\n• Penjelasan : Alive."
 help_autoread: " **AutoRead**\n\n• Perintah : `{0}autoread` [query] [on/off]\n• Penjelasan : Buat membaca semua pesan diakun anda.\n\n**Notes Optional:**\n- `gc` Buat membaca semua pesan grup diakun anda.\n- `tag` Buat baca mention atau tag.\n- `ch` Buat membaca semua pesan channel diakun anda.\n- `us` Buat membaca semua pesan pengguna diakun anda.\n- `all` Buat membaca semua pesan gc, ch, us diakun anda."
@@ -572,7 +578,7 @@ help_transmart: " **Translate**\n\n• Perintah : `{0}tts`\n• Penjelasan : Bua
 help_sys: " **System**\n\n• Perintah : `{0}update`\n• Penjelasan : Check Updater.\n\n• Perintah : `{0}reboot`\n• Penjelasan : Reboot userbot.\n\n• Perintah : `{0}host`\n• Penjelasan : System host.\n\n• Perintah : `{0}stats`\n• Penjelasan : System stats."
 help_sudo: " **Sudo**\n\n• Perintah: `{0}addsudo` [reply user]\n• Penjelasan: Buat menambahkan pengguna sudo.\n\n• Perintah: `{0}delsudo` [reply user]\n• Penjelasan: Buat menghapus pengguna sudo.\n\n• Perintah: `{0}sudolist`\n• Penjelasan: Buat melihat daftar sudo."
 help_stick: " **Sticker**\n\n• Perintah: `{0}gstik` [reply sticker]\n• Penjelasan: Buat mengambil info sticker.\n\n• Perintah: `{0}kang` [reply sticker]\n• Penjelasan: Buat mencuri atau membuat stickerpack sendiri.\n\n• Perintah: `{0}unkang` [reply sticker]\n• Penjelasan: Buat menghapus sticker/stickerpack yang sudah ada."
-help_spy: " **Spy**\n\n• Perintah: `{0}curi or spy`\n• Penjelasan: Buat mencuri pap timer (bukan sekali lihat)."
+help_spy: " **Spy**\n\n• Perintah: `{0}curi atau {0}spy`\n• Penjelasan: Buat mencuri pap timer (bukan sekali lihat)."
 help_spam: " **Spam**\n\n• Perintah: `{0}dspam` [jumlah] [waktu delay] [balas pesan]\n• Penjelasan: Buat melakukan delay spam.\n\n• Perintah: `{0}spam` [jumlah] [kata]\n• Penjelasan: Buat melakukan spam.\n\n• Perintah: `{0}cspam`\n• Penjelasan: Buat stop spam.\n\n• Perintah: `{0}dspamfw` [jumlah] [waktu delay] [link channel public]\n• Penjelasan: Buat melakukan delay spam forward link channel."
 help_sid: " **ShowID**\n\n• Perintah: `{0}id`\n• Penjelasan: Buat melihat id pengguna atau grup/channel.\n\n• Perintah: `{0}gifid`\n• Penjelasan: Buat melihat id gif."
 help_group: " **Group**\n\n• Perintah: `{0}purge` \n• Penjelasan: Buat menghapus pesan keseluruhan dari pesan yg dibalas.\n\n• Perintah: `{0}del` \n• Penjelasan: Buat menghapus pesan.\n\n• Perintah: `{0}report` \n• Penjelasan: Buat melaporkan pengguna.\n\n• Perintah: `{0}gctitle` \n• Penjelasan: Buat mengubah nama grup.\n\n• Perintah: `{0}gcdes`\n• Penjelasan: Buat mengubah deskripsi grup.\n\n• Perintah: `{0}gcpic`\n• Penjelasan: Buat mengubah foto grup.\n\n• Perintah: `{0}getlink or invitelink`\n• Penjelasan: Buat mengambil tautan grup.\n\n• Perintah: `{0}pin or unpin`\n• Penjelasan: Buat menyematkan pesan atau melepas sematan grup."
