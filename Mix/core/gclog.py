@@ -32,7 +32,7 @@ chat_id = int(log_channel) if log_channel else ndB.get_key("TAG_LOG")
 
 async def check_logger():
     # if not ndB.get_key("TAG_LOG") and log_channel is None:
-      if not chat_id:
+    if not chat_id:
         LOGGER.info(f"Creating Grup Log...")
         nama = f"Mix-Userbot Logs"
         des = "Jangan Keluar Dari Grup Log Ini\n\nPowered by: @KynanSupport"
