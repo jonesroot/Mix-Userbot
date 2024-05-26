@@ -103,7 +103,7 @@ async def _(c: nlx, m):
     em.initialize()
     pros = await m.reply(cgr("proses").format(em.proses))
     if len(m.command) < 2:
-        await pros.edit(cgr("tr_4").format(em.gagal, m.text, get_prefix))
+        await pros.edit(cgr("tr_4").format(em.gagal, m.text, nlx.get_prefix))
         return
     for lang, code in kode_bahasa.items():
         kd = m.text.split(None, 1)[1]
