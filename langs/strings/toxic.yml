@@ -537,6 +537,19 @@ konpert_22: "{} <b>Kaga ada suaranya itu, gagu ya. ganti file laen!</b>"
 konpert_23: "{} <b>Ini kan perintah sound to text, dari suara ke teks. ya lo balesnya ke audio lah GOBLOK!</b>"
 konpert_24: "{} <b>Bales ke audio lah anj!</b>"
 
+# adzan
+jan_1: "{} **Silahkan Masukkan Nama Kota Anda!!**"
+jan_2: "{} **Maaf tidak menemukan Kota `{}`**"
+jan_3: "**Jadwal Shalat Wilayah <u>{}</u>**\n\n"
+jan_4: "Tanggal `{}`\n"
+jan_5: "Kota `{} | {}`\n\n"
+jan_6: "Terbit : `{}`\n"
+jan_7: "Subuh : `{}`\n"
+jan_8: "Zuhur :`{}`\n"
+jan_9: "Ashar : `{}`\n"
+jan_10: "Maghrib : `{}`\n"
+jan_11: "Isya : `{}`\n"
+
 # help_for
 help_afk: " **Afk**\n\n• Perintah : `{0}afk` [alesan]\n• Penjelasan : Buat mengaktifkan mode afk.\n\n• Perintah : `{0}unafk`\n• Penjelasan : Buat menonaktifkan mode afk."
 help_alive: " **Alive**\n\n• Perintah : `{0}alive`\n• Penjelasan : Alive."
@@ -611,4 +624,5 @@ help_animstream: " **Anime Streaming**\n\n• Perintah: `{0}streaming` [Judul Fi
 help_pint: " **Pinterest**\n\n• Perintah: `{0}pint` [link pinterest]\n• Penjelasan: Untuk mengunduh file yang terdapat pada link.\n"
 help_enc: " **Base64 Encoder**\n\n• Perintah: `{0}encode` [teks|balas pesan]\n• Penjelasan: Untuk encode base64\n\n• Perintah: `{0}decode` [teks|balas pesan]\n• Penjelasan: Untuk decode base64\n"
 help_konpert: " **Convert**\n\n• Perintah: `{0}stt` [balss audio]\n• Penjelasan: Buat ngerubah audio jadi teks.\n\n• Perintah: `{0}toanime` [bales media]\n• Penjelasan: Ngerubah jadi pake epek animek.\n\n• Perintah: `{0}toimg` [bales sticker]\n• Penjelasan: Ngerubah stiker jadi Poto.\n\n• Perintah: `{0}tosticker` kalo ngga `{0}tostick` [bales foto]\n• Penjelasan: Ngerubah poto jadi stiker.\n\n• Perintah: `{0}togif` [bales sticker]\n• Penjelasan: Ngerubah stiker jadi GIF.\n\n• Perintah: `{0}toaudio` [bales video]\n• Penjelasan : Ngerubah pidio jadi audio.\n\n• Perintah: `{0}list-efek`\n• Penjelasan: Buat nampilin daptar epek.\n\n• Perintah: `{0}efek` [nama-efek] [bales ke audio]\n• Penjelasan: ngerubah epek audio.\n"
-help_pek: " **Fake Actions**\n\n• Perintah: {0}giben atau {0}gben [balas pengguna|username|user_id]\n• Penjelasan: Untuk berpura-pura melakukan global ban.\n\n• Perintah: {0}gmut atau {0}gimute[balas pengguna|username|user id]\n• Penjelasan: Untuk berpura-pura melakukan global mute.\n\n• Perintah: {0}gikick atau {0}gkik [balas pengtuna|username|userid]\n• Penjelasan: Untuk berpura-pura melakukan global kick.\n\n• Perintah: {0}teep atau {0}tf [balas pengguna|username|user id] [nominal (optional)]\n• Penjelasan: Untuk berpura-pura melakukan Transfer Uang."
+help_pek: " **Fake Actions**\n\n• Perintah: {0}giben atau {0}gben [balas pengguna|username|user_id]\n• Penjelasan: Untuk berpura-pura melakukan global ban.\n\n• Perintah: {0}gmut atau {0}gimute[balas pengguna|username|user id]\n• Penjelasan: Untuk berpura-pura melakukan global mute.\n\n• Perintah: {0}gikick atau {0}gkik [balas pengtuna|username|userid]\n• Penjelasan: Untuk berpura-pura melakukan global kick.\n\n• Perintah: {0}teep atau {0}tf [balas pengguna|username|user id] [nominal (optional)]\n• Penjelasan: Untuk berpura-pura melakukan Transfer Uang.\n"
+help_ajan: " **Adzan**\n\n• Perintah: {0}adzan [nama kota]\n• Penjelasan: Untuk mengetahui waktu Adzan di kota tertentu.\n"
