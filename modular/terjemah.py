@@ -58,10 +58,10 @@ async def _(c: nlx, m):
     trans = Translator()
     rep = m.reply_to_message
     txt = m.reply_to_message.text if rep else m.text.split(None, 1)[1]
+    if not text:
+        await pros.edit(cgr("tr_1").format(em.gagal, m.text))
     src = await trans.detect(txt)
     pros = await m.reply(cgr("proses").format(em.proses))
-    if not rep and not text:
-        await pros.edit(cgr("tr_1").format(em.gagal, m.text))
     trsl = await trans(txt, sourcelang=src, targetlang=bhs)
     reply = cgr("tr_2").format(em.sukses, trsl.text)
     rep = m.reply_to_message or m
