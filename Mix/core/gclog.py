@@ -19,7 +19,6 @@ from pyrogram import __version__ as pyrover
 from pyrogram.errors import *
 from pyrogram.types import ChatPrivileges
 from pytgcalls import __version__ as pytgver
-from team.nandev.class_handler import TAG_LOG
 from team.nandev.class_log import LOGGER
 from team.nandev.class_modules import CMD_HELP
 from team.nandev.database import ndB
@@ -27,8 +26,8 @@ from team.nandev.database import ndB
 from config import *
 from Mix import bot, nlx
 
-
 chat_id = int(log_channel) if log_channel else ndB.get_key("TAG_LOG")
+
 
 async def check_logger():
     # if not ndB.get_key("TAG_LOG") and log_channel is None:
