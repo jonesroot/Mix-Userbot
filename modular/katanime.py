@@ -16,21 +16,7 @@ import requests
 from Mix import *
 
 __modles__ = "Katanime"
-__help__ = """
- Kata Anime
-
-• Perintah: `{0}katanimelist`
-• Penjelasan: Melihat Daftar dan total kata anime.
-
-• Perintah: `{0}katanime`
-• Penjelasan: Mengambil kata anime  dan karakter secara random
-
-• Perintah: `{0}kata` [anime]
-• Penjelasan: Mengambil kata dari anime tersebut.
-
-• Perintah: `{0}katanime` [kata]
-• Penjelasan: Mencari kata anime berdasarkan argumen yang diberikan.
-"""
+__help__ = get_cgr("help_katnim")
 
 
 def carikatanime(katanya):
@@ -49,11 +35,11 @@ def carikatanime(katanya):
                 anim = ambil1.get("anime", "")
                 karak = ambil1.get("character", "")
                 kata = ambil1.get("indo", "")
-                akhir = f"**Anime: {anim}**\n**{karak}:** {kata}"
+                akhir = cgr("katnim_1").format(anim, karak, kata)
                 return akhir
             except IndexError:
                 dicoba += 1
-        return "Maaf sepertinya kata yang kamu cari tidak ada"
+        return cgr("katnim_2")
     else:
         print(f"error {res.status_code} {res.text}")
 
@@ -68,10 +54,10 @@ def ambil_katanime():
         anim = ambil1.get("anime", "")
         karak = ambil1.get("character", "")
         kata = ambil1.get("indo", "")
-        akhir = f"**Anime: {anim}**\n**{karak}:** {kata}"
+        akhir = cgr("katnim_1").format(anim, karak, kata)
         return akhir
     else:
-        return f"Error {res.status_code} {res.text}"
+        return cgr("katnim_3").format(res.status_code, res.text)
 
 
 def getbyanime(tokoh):
@@ -92,11 +78,11 @@ def getbyanime(tokoh):
                 anim = ambil1.get("anime", "")
                 karak = ambil1.get("character", "")
                 kata = ambil1.get("indo", "")
-                akhir = f"**Anime: {anim}**\n**{karak}:** {kata}"
+                akhir = cgr("katnim_1").format(anim, karak, kata)
                 return akhir
             except IndexError:
                 dicoba += 1
-        return "Maaf sepertinya kata yang kamu cari tidak ada"
+        return cgr("katnim_2")
     else:
         print(f"error {res.status_code} {res.text}")
 
@@ -111,7 +97,7 @@ def animelist():
         for isi in results:
             anim = isi.get("anime", "")
             kata = isi.get("totalKata", "")
-            akhir = f"**Anime: {anim}\nTotal Kata:** {kata}\n"
+            akhir = cgr("katnim_4").format(anim, kata)
             daftar.append(akhir)
         return "".join(daftar)
     else:
@@ -133,7 +119,7 @@ async def _(c: nlx, m):
         await sleep(0.5)
         await m.reply(cari_kata, reply_to_message_id=ReplyCheck(m))
     else:
-        await m.reply(f"{em.gagal} Silahkan balas pesan atau berikan tokoh karakter")
+        await m.reply(cgr("katnim_5").format(em.gagal))
     await mek.delete()
 
 
@@ -151,7 +137,7 @@ async def _(c: nlx, m):
             file.close()
             await m.reply_document(
                 "DaftarAnime.txt",
-                caption="Ini adalah total kata dan daftar anime beserta karakter.",
+                caption=cgr("katnim_6"),
                 reply_to_message_id=ReplyCheck(m),
             )
             os.remove("DaftarAnime.txt")
@@ -170,5 +156,5 @@ async def _(c: nlx, m):
         await sleep(0.5)
         await m.reply(cari_kata, reply_to_message_id=ReplyCheck(m))
     else:
-        await m.reply(f"{em.gagal} Format salah!! Silahkan lihat bantuan.")
+        await m.reply(cgr("katnim_7").format(em.gagal))
     await mek.delete()
