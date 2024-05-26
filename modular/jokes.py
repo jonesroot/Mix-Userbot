@@ -1,20 +1,20 @@
 import requests
+import gtts
 from gpytranslate import Translator
+from Mix.core.parser import kode_bahasa
+
 
 from Mix import *
 
 __modles__ = "Joke"
-__help__ = """
- Joke
-
-• Perintah: `{0}joke`
-• Penjelasan: Untuk generate random joke.
-"""
+__help__ = get_cgr("help_joko")
 
 
-async def kitatr(txt):
+async def kitatr(c, txt):
     cokk = Translator()
-    gasin = await cokk.translate(txt, "en", "id")
+    bhs = c._translate[c.me.id]["negara"]
+    src = await cokk.detect(txt)
+    gasin = await cokk.translate(txt, sourcelang=src, targetlang=bhs)
     return gasin.text
 
 
@@ -42,9 +42,9 @@ async def _(c: nlx, m):
     if joke:
         question, answer = joke.split("?", 1)
         question += "?"
-        translated_question = await kitatr(question)
-        translated_answer = await kitatr(answer.strip())
-        response = f"**Pertanyaan Jokes:**\n{translated_question}\n\n**Jawaban Jokes:**\n{translated_answer}"
+        translated_question = await kitatr(c, question)
+        translated_answer = await kitatr(c, answer.strip())
+        response = cgr("joko_1").format(em.sukses, translated_question, translated_answer)
         await pros.edit(response)
     else:
-        await pros.edit("Gagal mendapatkan joke.")
+        await pros.edit(cgr("joko_2").format(em.gagal))
