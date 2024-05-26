@@ -15,7 +15,7 @@ async def _(c: nlx, m):
     lok = c.get_text(m)
     pros = await m.reply(cgr("proses").format(em.proses))
     if not lok:
-        await pros.edit(cgr("jan_1").format(em.gagal)
+        await pros.edit(cgr("jan_1").format(em.gagal))
         return
     url = f"http://muslimsalat.com/{lok}.json?key=bd099c5825cbedb9aa934e255a81a5fc"
     req = requests.get(url)
