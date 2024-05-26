@@ -25,14 +25,14 @@ async def _(c: nlx, m: Message):
 
     result = json.loads(req.text)
     txt = cgr("jan_3").format(lok)
-    txt += cgr("jan_4").format(result["items"][0]["date_for"]) + "\n"
-    txt += cgr("jan_5").format(result["query"], result["country"]) + "\n"
-    txt += cgr("jan_6").format(result["items"][0]["shurooq"]) + "\n"
-    txt += cgr("jan_7").format(result["items"][0]["fajr"]) + "\n"
-    txt += cgr("jan_8").format(result["items"][0]["dhuhr"]) + "\n"
-    txt += cgr("jan_9").format(result["items"][0]["asr"]) + "\n"
-    txt += cgr("jan_10").format(result["items"][0]["maghrib"]) + "\n"
-    txt += cgr("jan_11").format(result["items"][0]["isha"]) + "\n"
+    txt += cgr("jan_4").format(result["items"][0]["date_for"])
+    txt += cgr("jan_5").format(result["query"], result["country"])
+    txt += cgr("jan_6").format(result["items"][0]["shurooq"])
+    txt += cgr("jan_7").format(result["items"][0]["fajr"])
+    txt += cgr("jan_8").format(result["items"][0]["dhuhr"])
+    txt += cgr("jan_9").format(result["items"][0]["asr"])
+    txt += cgr("jan_10").format(result["items"][0]["maghrib"])
+    txt += cgr("jan_11").format(result["items"][0]["isha"])
 
     await m.reply(txt)
     await pros.delete()
