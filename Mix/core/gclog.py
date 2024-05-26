@@ -17,7 +17,7 @@ import wget
 from pyrogram import *
 from pyrogram import __version__ as pyrover
 from pyrogram.errors import *
-from pyrogram.types import ChatPrivileges, Chat
+from pyrogram.types import ChatPrivileges
 from pytgcalls import __version__ as pytgver
 from team.nandev.class_log import LOGGER
 from team.nandev.class_modules import CMD_HELP
