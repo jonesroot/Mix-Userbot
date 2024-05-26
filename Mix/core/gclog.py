@@ -36,12 +36,12 @@ async def check_logger():
         nama = f"Mix-Userbot Logs"
         des = "Jangan Keluar Dari Grup Log Ini\n\nPowered by: @KynanSupport"
         log_pic = "https://telegra.ph//file/ee7fc86ab183a0ff90392.jpg"
-        gc = await nlx.create_supergroup(nama, des)
+        # gc = await nlx.create_supergroup(nama, des)
+        gc = await nlx.create_group(nama, users=bot.me.username)
         bhan = wget.download(f"{log_pic}")
         gmbr = {"video": bhan} if bhan.endswith(".mp4") else {"photo": bhan}
         kntl = gc.id
         await nlx.set_chat_photo(kntl, **gmbr)
-        await nlx.add_chat_members(kntl, bot.me.username)
         await nlx.promote_chat_member(
             kntl,
             bot.me.username,
