@@ -566,7 +566,7 @@ ipin_11: "• Currency : `{}`"
 ipin_12: "Tautan Lokasi"
 ipin_13: "Tutup"
 ipin_14: "{} **Sukses mendapatkan informasi dari IP `{}` :**\n\n{}"
-""
+
 # jokes
 joko_1: "{} **Berikut adalah candaannya: **\n\n**• Pertanyaan Jokes:**\n`{}`\n\n**• Jawaban Jokes:**\n`{}`"
 joko_2: "{} **Gagal mendapatkan joke.**"
