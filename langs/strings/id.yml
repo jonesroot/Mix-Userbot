@@ -566,12 +566,22 @@ ipin_11: "• Currency : `{}`"
 ipin_12: "Tautan Lokasi"
 ipin_13: "Tutup"
 ipin_14: "{} **Sukses mendapatkan informasi dari IP `{}` :**\n\n{}"
-
+""
 # jokes
 joko_1: "{} **Berikut adalah candaannya: **\n\n**• Pertanyaan Jokes:**\n`{}`\n\n**• Jawaban Jokes:**\n`{}`"
 joko_2: "{} **Gagal mendapatkan joke.**"
 
+# kata anime
+katnim_1: "**Anime: {}**\n**{}:** `{}`"
+katnim_2: "Maaf sepertinya kata yang kamu cari tidak ada"
+katnim_3: "Error :\n\n`{}`\n`{}`"
+katnim_4: "**Anime: {}\nTotal Kata:** {}\n"
+katnim_5: "{} Silahkan balas pesan atau berikan tokoh karakter"
+katnim_6: "Ini adalah total kata dan daftar anime beserta karakter."
+katnim_7: "{} Format salah!! Silahkan lihat bantuan."
+
 # help_for
+help_katnim: " **Kata Anime**\n\n• Perintah: `{0}katanimelist`\n• Penjelasan: Melihat daftar dan total kata-kata anime.\n\n• Perintah: `{0}katanime ` \n• Penjelasan: Memilih kata dan karakter anime secara acak\n\n•Perintah: `{0}kata` [anime]\n• Penjelasan: Mengambil kata dari anime.\n\n• Perintah: `{0}katanime` [kata]\n• Penjelasan: Menelusuri kata anime berdasarkan argumen yang diberikan."
 help_joko: " **Joke**\n\n• Perintah: `{0}joke` atau `{0}jokes`\n• Penjelasan: Untuk memberikan jokes secara random.\n"
 help_img: " **Image**\n\n• Perintah: `{0}img` [query]\n• Penjelasan: Untuk mencari gambar.\n"
 help_ips: " **IpSearch**\n\n• Perintah: `{0}ipinfo` [ip]\n• Penjelasan: Untuk mencari tau informasi dari sebuah alamat IP.\n\n• Tidak 100% Akurat.\n"
