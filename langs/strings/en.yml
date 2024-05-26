@@ -568,7 +568,7 @@ ipin_13: "Close"
 ipin_14: "{} **Successful getting information from IP `{}` :**\n\n{}"
 
 #jokes
-joko_1: "**Joke Question:**\n{}\n\n**Joke Answer:**\n{}"
+joko_1: "{} **Try Not To Laugh!**\n\n**• Joke Question:**\n`{}`\n\n**• Joke Answer:**\n`{}`"
 joko_2: "{} **Failed to get joke.**"
 
 # help_for
