@@ -112,5 +112,5 @@ async def _(c: nlx, m):
             await pros.edit(cgr("tr_5").format(em.sukses, kd, lang))
             return
         else:
-            await pros.edit(cgr("tr_6").format(em.gagal))
+            await pros.edit(cgr("tr_6").format(em.gagal, m.command[0]))
             return
