@@ -66,8 +66,7 @@ async def _(c: nlx, m):
         txt = None
 
     if not txt:
-        await pros.edit(
-            cgr("tr_1").format(em.gagal, m.text))
+        await pros.edit(cgr("tr_1").format(em.gagal, m.text))
         return
 
     try:
