@@ -567,7 +567,12 @@ ipin_12: "Location Link"
 ipin_13: "Close"
 ipin_14: "{} **Successful getting information from IP `{}` :**\n\n{}"
 
+#jokes
+joko_1: "**Joke Question:**\n{}\n\n**Joke Answer:**\n{}"
+joko_2: "{} **Failed to get joke.**"
+
 # help_for
+help_joko: " **Joke**\n\n• Command: `{0}joke` or `{0}jokes`\n• Description: To provide random jokes.\n"
 help_img: " **Image**\n\n• Command: `{0}img` [query]\n• Description: To search for images.\n"
 help_ips: " **IpSearch**\n\n• Command: `{0}ipinfo` [ip]\n• Description: To find an information of an IP Address\n\n• Not 100% accurate.\n"
 help_gitup: " **Github**\n\n• Command: `{0}github` [username]\n• Description: To view someone's github account profile.\n"
