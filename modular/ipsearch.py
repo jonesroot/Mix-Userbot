@@ -68,7 +68,7 @@ async def _(c: nlx, m):
             google_maps_link = f"https://www.google.com/maps?q={latitude},{longitude}"
             keyboard = InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton(cgr("ipin_12")), url=google_maps_link)],
+                    [InlineKeyboardButton(cgr("ipin_12")), url=f"{google_maps_link}"],
                     [InlineKeyboardButton(cgr("ipin_13")), callback_data="close_ip")],
                 ]
             )
