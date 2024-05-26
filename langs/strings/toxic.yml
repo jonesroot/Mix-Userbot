@@ -65,10 +65,6 @@ fil_14: "{} Filter `{}` dihapus!"
 fil_15: "{} Semua Filter berhasil dihapus."
 fil_16: "{} Tidak dapat menemukan Filter ini"
 
-# image
-help_img: " **Image**\n\n• Perintah: `{0}`img [query]\n• Penjelasan: Untuk mencari gambar."
-help_ips: " **IpSearch**\n\n• Perintah: `{0}`ipf [country]\n• Penjelasan: Untuk mencari fake address.\n\n• Perintah: `{0}`ips [ip]\n• Penjelasan: Untuk mencari alamat\n\n• Tidak 100% Akurat."
-
 # mention
 ment_1: "{} <b>Yang bener aje goblok! Lo itu bukan admin di sini! Lo itu ampas!</b>"
 ment_2: "{} <b>Minimal kasih teks nya lah goblok!</b>"
@@ -555,7 +551,25 @@ gitup: "{} **Masukkan username github!!**"
 gitup_1: "{} **Profil Github [{}]({}) :**\n\n**Nama**: [{}]({})\n**Jenis**: `{}`\n**Perusahaan**: `{}`\n**Blog**: `{}`\n**Lokasi**: `{}`\n**Biografi**: `{}`\n**Profil Dibuat**: `{}`\n"
 gitup_2: "{} **404 : Pengguna Tidak Ditemukan!!**"
 
+# ip info
+ipin_1: "{} **Berikut informasi dari `{}`:"
+ipin_2: "• Alamat IP : `{}`\n"
+ipin_3: "• Nama Host : `{}`\n"
+ipin_4: "• Kota : `{}`\n"
+ipin_5: "• Wilayah : `{}`\n"
+ipin_6: "• Negara : `{}`\n"
+ipin_7: "• Lokasi : [{}]({})\n"
+ipin_8: "• Kode POS : `{}`\n"
+ipin_9: "• Zona Waktu : `{}`\n"
+ipin_10: "• Bendera : `{}`\n"
+ipin_11: "• Mata Uang : `{}`"
+ipin_12: "Tautan Lokasi"
+ipin_13: "Tutup"
+ipin_14: "{} **Sukses mendapatkan informasi dari IP `{}` :**\n\n{}"
+
 # help_for
+help_img: " **Image**\n\n• Perintah: `{0}img` [query]\n• Penjelasan: Untuk mencari gambar.\n"
+help_ips: " **IpSearch**\n\n• Perintah: `{0}ipinfo` [ip]\n• Penjelasan: Untuk mencari tau informasi dari sebuah alamat IP.\n\n• Tidak 100% Akurat.\n"
 help_gitup: " **Github**\n\n• Perintah: `{0}github` [username]\n• Penjelasan: Untuk melihat profil akun github seseorang.\n"
 help_afk: " **Afk**\n\n• Perintah : `{0}afk` [alesan]\n• Penjelasan : Buat mengaktifkan mode afk.\n\n• Perintah : `{0}unafk`\n• Penjelasan : Buat menonaktifkan mode afk."
 help_alive: " **Alive**\n\n• Perintah : `{0}alive`\n• Penjelasan : Alive."
@@ -567,7 +581,7 @@ help_dev: " **Developer**\n\n• Perintah : `{0}sh`\n• Penjelasan : Execute co
 help_gcast: " **Broadcast**\n\n• Perintah : `{0}gucast` [balas pesan/kirim pesan]\n• Penjelasan : Buat pengirim pesan ke semua pengguna.\n\n• Perintah : `{0}gcast` [balas pesan/kirim pesan]\n• Penjelasan : Buat pengirim pesan ke semua grup.\n\n• Perintah: `{0}addbl`\n• Penjelasan: Menambahkan grup kedalam anti Gcast.\n\n• Perintah: `{0}delbl`\n• Penjelasan: Menghapus grup dari daftar anti Gcast.\n\n• Perintah: `{0}rmall`\n• Penjelasan: Menghapus semua grup dari daftar anti Gcast.\n\n• Perintah: `{0}listbl`\n• Penjelasan: Melihat daftar grup anti Gcast.\n\n• Perintah : `{0}send` [username/user_id - teks/reply]\n• Penjelasan : Buat mengirim pesan ke pengguna/grup/channel."
 help_global: " **Global**\n\n• Perintah : `{0}gban` [user_id/username/bales pesan]\n• Penjelasan : Buat melakukan global banned.\n\n• Perintah : `{0}ungban` [user_id/username/bales pesan]\n• Penjelasan : Buat melakukan global unbanned.\n\n• Perintah : `{0}listgban` [user_id/username/bales pesan]\n• Penjelasan : Buat melihat daftar pengguna gban.\n\n• Perintah : `{0}gmute` [user_id/username/bales pesan]\n• Penjelasan : Buat melakukan global mute.\n\n• Perintah : `{0}ungmute` [user_id/username/bales pesan]\n• Penjelasan : Buat melakukan global unmute.\n\n• Perintah : `{0}listgmute` [user_id/username/bales pesan]\n• Penjelasan : Buat melihat daftar pengguna gmute."
 help_graph: " **Telegraph**\n\n• Perintah: `{0}tg`\n• Penjelasan: Buat mengunggah teks, video atau foto."
-help_gruplog: " **GrupLog**\n\n• Perintah: `{0}gruplog` [on/off]\n• Penjelasan: Aktifkan tag log dan pm log."
+help_gruplog: " **GrupLog**\n\n• Perintah: `{0}gruplog` [on/off]\n• Penjelasan: Aktifkan tag log dan pm log.\n\n• Perintah: `{0}setdb taglog` [on/off]\n• Penjelasan: Untuk Aktifkan/menonaktifkan tag logger\n\n• Perintah: `{0}setdb pmlog` [on/off]\n• Penjelasan: Untuk Aktifkan/menonaktifkan PM logger.\n"
 help_heroku: " **Heroku**\n\n• Perintah : `{0}getlog`\n• Penjelasan : Melihat log heroku.\n\n• Perintah : `{0}getvar`\n• Penjelasan : Melihat variabel diheroku.\n\n• Perintah : `{0}delvar`\n• Penjelasan : Menghapus variabel diheroku .\n\n• Perintah : `{0}setvar`\n• Penjelasan : Mengatur variabel dan value diheroku."
 help_info: " **Info**\n\n• Perintah: `{0}`staff\n• Penjelasan: Ngambil daftar admin di grup.\n\n• Perintah: `{0}info`\n• Penjelasan: Buat melihat info pengguna.\n\n• Perintah: `{0}cinfo`\n• Penjelasan: Buat melihat info grup."
 help_webss: " **Webshot**\n\n• Perintah : `{0}webss or ss`\n• Penjelasan : Buat mengambil tangkapan layar link."
@@ -621,7 +635,6 @@ help_repo: " **Repository**\n\n• Perintah: `{0}`repo\n• Penjelasan: Untuk me
 help_nul: " **Nulis**\n\n• Perintah: `{0}`nulis\n• Penjelasan: Untuk pemalas nulis."
 help_lirk: " **Lyric**\n\n• Perintah: `{0}`lyrics\n• Penjelasan: Untuk mencari lirik lagu."
 help_auend: " **AutoEnd**\n\n• Perintah: `{0}endchat` [username/id pengguna/balas pengguna]\n• Penjelasan: Untuk menghapus riwayat obrolan\n\n• Optional: \n• `username/balas pengguna` - Menghapus riwayat obrolan pengguna\n• `bot` - Menghapus semua riwayat obrolan bot\n• `all` - Menghapus riwayat obrolan pesan pribadi anda dengan semua pengguna."
-help_img: " **Image**\n\n• Perintah: `{0}`img [kata kunci]\n• Penjelasan: Nyari gambar.\n"
 help_tod: " **Truth Or Dare**\n\n• Perintah: `{0}truth`\n• Penjelasan: Untuk memberikan pertanyaan random yang harus dijawab jujur!\n\n• Perintah: `{0}dare`\n• Penjelasan: Untuk memberikan tantangan random yang harus dilakukan!\n"
 help_prox: " **Proxy**\n\n• Perintah: `{0}getproxy` [`http`|`socks4`|`socks5`]\n• Penjelasan: Buat ngambil proxy ngacak terbaik.\n"
 help_waif: " **Waifu**\n\n• Perintah: `{0}waifu` [tags] [jumlah (Optional,Default 3)]\n• Penjelasan: Untuk mendapatkan gambar waifu/anime sesuai tags.\n\n• Perintah: `{0}loly` [kategori]\n• Penjelasan: Untuk mendapatkan gambar waifu/anime sesuai kategori.\n\n• Perintah: `{0}neko` [kueri]\n• Penjelasan: Untuk mendapatkan gambar anime dewasa sesuai kueri.\n"
