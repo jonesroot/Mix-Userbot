@@ -30,7 +30,7 @@ async def get_joke():
         return None
 
 
-@ky.ubot("joke", sudo=True)
+@ky.ubot("joke|jokes", sudo=True)
 async def _(c: nlx, m):
     em = Emojik()
     em.initialize()
