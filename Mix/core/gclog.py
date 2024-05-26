@@ -17,7 +17,7 @@ import wget
 from pyrogram import *
 from pyrogram import __version__ as pyrover
 from pyrogram.errors import *
-from pyrogram.types import ChatPrivileges
+from pyrogram.types import ChatPrivileges, Chat
 from pytgcalls import __version__ as pytgver
 from team.nandev.class_log import LOGGER
 from team.nandev.class_modules import CMD_HELP
@@ -36,8 +36,7 @@ async def check_logger():
         nama = f"Mix-Userbot Logs"
         des = "Jangan Keluar Dari Grup Log Ini\n\nPowered by: @KynanSupport"
         log_pic = "https://telegra.ph//file/ee7fc86ab183a0ff90392.jpg"
-        # gc = await nlx.create_supergroup(nama, des)
-        gc = await nlx.create_group(nama, users=bot.me.username)
+        gc = await nlx.create_supergroup(nama, des)
         bhan = wget.download(f"{log_pic}")
         gmbr = {"video": bhan} if bhan.endswith(".mp4") else {"photo": bhan}
         kntl = gc.id
