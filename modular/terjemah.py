@@ -66,7 +66,12 @@ async def _(c: nlx, m):
         txt = None
 
     if not txt:
-        await pros.edit(cgr("tr_1").format(em.gagal, "Mohon balas pesan dengan teks atau masukkan teks setelah perintah /tr."))
+        await pros.edit(
+            cgr("tr_1").format(
+                em.gagal,
+                "Mohon balas pesan dengan teks atau masukkan teks setelah perintah /tr.",
+            )
+        )
         return
 
     try:
@@ -75,7 +80,9 @@ async def _(c: nlx, m):
         trsl = await trans(txt, sourcelang=src, targetlang=bhs)
         reply = cgr("tr_2").format(em.sukses, trsl.text)
         await pros.delete()
-        await c.send_message(m.chat.id, reply, reply_to_message_id=(rep.id if rep else m.id))
+        await c.send_message(
+            m.chat.id, reply, reply_to_message_id=(rep.id if rep else m.id)
+        )
     except Exception as e:
         await pros.edit(cgr("err").format(em.gagal, str(e)))
 
