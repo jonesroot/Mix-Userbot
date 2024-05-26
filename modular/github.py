@@ -12,11 +12,7 @@ import requests
 from Mix import *
 
 __modles__ = "Github"
-__help__ = """
- Github
-• Perintah: `{0}github` username
-• Penjelasan: Untuk melihat profil akun github seseorang.
-"""
+__help__ = get_cgr("help_gitup")
 
 
 @ky.ubot("github", sudo=True)
@@ -26,7 +22,7 @@ async def _(c: nlx, m):
     pros = await m.reply(cgr("proses").format(em.proses))
     txt = c.get_text(m)
     if not txt:
-        await pros.edit(f"{em.gagal} **Masukkan username github!!**")
+        await pros.edit(cgr("gitup").format(em.gagal))
         return
     url = f"https://api.github.com/users/{txt}"
     r = requests.get(url)
@@ -41,7 +37,7 @@ async def _(c: nlx, m):
         location = b.get("location")
         bio = b.get("bio")
         created_at = b.get("created_at")
-        cap = f"{em.sukses} **Nama**: [{name}]({html_url})\n**Jenis**: {gh_type}\n**Perusahaan**: {company}\n**Blog**: {blog}\n**Lokasi**: {location}\n**Biografi**: {bio}\n**Profil Dibuat**: {created_at}"
+        cap = cgr("gitup_1").format(em.sukses, name, html_url, gh_type, company, blog, location, bio, created_at)
         if avatar_url:
             await pros.delete()
             await c.send_photo(m.chat.id, avatar_url, caption=cap)
@@ -50,5 +46,5 @@ async def _(c: nlx, m):
             await pros.edit(cap)
             return
     else:
-        await pros.edit(f"{em.gagal} **404 : Pengguna Tidak Ditemukan!!**")
+        await pros.edit(cgr("gitup_2").format(em.gagal))
         return
