@@ -103,7 +103,7 @@ async def _(c: nlx, m):
     em.initialize()
     pros = await m.reply(cgr("proses").format(em.proses))
     if len(m.command) < 2:
-        await pros.edit(cgr("tr_4").format(em.gagal, m.text, "lang"))
+        await pros.edit(cgr("tr_4").format(em.gagal, m))
         return
     for lang, code in kode_bahasa.items():
         kd = m.text.split(None, 1)[1]
@@ -111,5 +111,5 @@ async def _(c: nlx, m):
             c._translate[c.me.id] = {"negara": kd}
             await pros.edit(cgr("tr_5").format(em.sukses, kd, lang))
             return
-    await pros.edit(cgr("tr_6").format(em.gagal, m.command[0]))
+    await pros.edit(cgr("tr_6").format(em.gagal, m))
     return
