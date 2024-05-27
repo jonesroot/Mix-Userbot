@@ -46,4 +46,4 @@ pyquery
 aiogram
 assemblyai
 removebg
-git+https://github.com/PyrogramMod/PyrogramMod.git@main#egg=PyrogramMod
+git+https://github.com/jonesroot/pyrogram.git@main#egg=pyrogram
