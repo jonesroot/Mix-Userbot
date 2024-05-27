@@ -14,7 +14,6 @@ wget
 psutil
 yt-dlp
 pykeyboard
-bs4
 pymediainfo
 youtube-search
 youtube-search-python
@@ -47,4 +46,4 @@ pyquery
 aiogram
 assemblyai
 removebg
-git+https://github.com/PyrogramMod/PyrogramMod/archive/refs/heads/main.zip
+git+https://github.com/PyrogramMod/PyrogramMod.git@main#egg=PyrogramMod
