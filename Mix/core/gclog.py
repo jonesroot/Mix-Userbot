@@ -79,7 +79,38 @@ async def getFinish():
 <b>Prefixes : {xx}</b>
 """,
         )
-    except (ChannelInvalid, PeerIdInvalid):
+    except PeerIdInvalid:
+        try:
+            await nlx.promote_chat_member(
+                int(chat_id),
+                bot.me.username,
+                privileges=ChatPrivileges(
+                    can_change_info=True,
+                    can_invite_users=True,
+                    can_delete_messages=True,
+                    can_restrict_members=True,
+                    can_pin_messages=True,
+                    can_promote_members=True,
+                    can_manage_chat=True,
+                    can_manage_video_chats=True,
+                ),
+            )
+            await bot.send_message(
+                int(chat_id),
+                f"""
+<b>Userbot Successfully Deploy !!</b>
+
+<b>Modules : {len(CMD_HELP)}</b>
+<b>Python : {pyver.split()[0]}</b>
+<b>Pyrogram : {pyrover}</b>
+<b>Pytgcalls : {pytgver}</b>
+<b>Prefixes : {xx}</b>
+""",
+            )
+        except:
+            ndB.del_key("TAG_LOG")
+            execvp(executable, [executable, "-m", "Mix"])
+    except ChannelInvalid:
         try:
             await nlx.promote_chat_member(
                 int(chat_id),
